@@ -1,9 +1,9 @@
 import React from "react";
-import phoneLightVideo from "./assets/phone-light.mp4";
-import logo from "./assets/InviSm.svg";
-import logopng from "./assets/Invi.png";
-import instagram from "./assets/Instagram.svg";
-import X from "./assets/X.svg";
+import phoneLightVideo from "./Assets/phone-light.mp4";
+import logo from "./Assets/InviSm.svg";
+import logopng from "./Assets/Invi.png";
+import instagram from "./Assets/Instagram.svg";
+import X from "./Assets/X.svg";
 
 const App = () => {
   return (
