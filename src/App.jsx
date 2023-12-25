@@ -2,8 +2,7 @@ import React from "react";
 import phoneLightVideo from "./Assets/phone-light.mp4";
 import logo from "./Assets/InviSm.svg";
 import logopng from "./Assets/Invi.png";
-import instagram from "./Assets/Instagram.svg";
-import X from "./Assets/X.svg";
+import Footer from "./Footer";
 
 const App = () => {
   return (
@@ -40,10 +39,7 @@ const App = () => {
           </video>
         </div>
 
-        <div className="w-full border-t border-gray-800 border-opacity-10 gap-6 flex p-4 justify-end">
-          <img src={X} alt="X" />
-          <img src={instagram} alt="Instagram" />
-        </div>
+        <Footer />
       </div>
     </div>
   );
