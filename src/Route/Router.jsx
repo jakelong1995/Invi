@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Appcontainer from "../homePage/Appcontainer";
 import CreateEvent from "../event/CreateEvent";
-
 import ErrorPage from "./ErrorPage";
 
 const router = createBrowserRouter([

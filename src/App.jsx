@@ -1,8 +1,8 @@
 import React from "react";
-import phoneLightVideo from "./Assets/phone-light.mp4";
-import logo from "./Assets/InviSm.svg";
-import logopng from "./Assets/Invi.png";
-import Footer from "./Footer";
+import phoneLightVideo from "./assets/phone-light.mp4";
+import logo from "./assets/InviSm.svg";
+import logopng from "./assets/Invi.png";
+import Footer from "./pages/Footer/Footer";
 
 const App = () => {
   return (
