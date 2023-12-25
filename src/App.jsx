@@ -17,7 +17,7 @@ const App = () => {
         </div>
 
         {/* body */}
-        <div className="flex flex-col md:flex-row gap-16 justify-between w-full">
+        <div className="flex flex-col md:flex-row gap-16 justify-between w-full items-center">
           <div className="flex flex-col max-w-sm gap-8 items-center text-center md:items-start md:text-left mx-auto">
             <img src={logopng} alt="logo" className="w-16" />
             <h1 className="text-gray-800 font-semibold text-4xl md:text-5xl">
