@@ -1,10 +1,10 @@
 import React from "react";
-import phoneLightVideo from "./Assets/phone-light.mp4";
-import logo from "./Assets/InviSm.svg";
-import logopng from "./Assets/Invi.png";
+import phoneLightVideo from "../../assets/phone-light.mp4";
+import logo from "../../assets/InviSm.svg";
+import logopng from "../../assets/Invi.png";
 import Footer from "./Footer";
 
-const App = () => {
+const Home = () => {
   return (
     <div className="bg-rose-50 bg-opacity-20">
       <div className="mx-auto p-4 flex flex-col justify-between h-screen max-w-5xl">
@@ -45,4 +45,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
