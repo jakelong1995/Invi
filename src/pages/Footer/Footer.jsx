@@ -1,6 +1,6 @@
 import React from "react";
-import instagram from "./assets/Instagram.svg";
-import X from "./assets/X.svg";
+import instagram from "/src/Assets/Instagram.svg";
+import X from "/src/Assets/X.svg";
 
 const Footer = () => {
   return (

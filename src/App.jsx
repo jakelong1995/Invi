@@ -2,7 +2,7 @@ import React from "react";
 import phoneLightVideo from "./assets/phone-light.mp4";
 import logo from "./assets/InviSm.svg";
 import logopng from "./assets/Invi.png";
-import Footer from "./pages/Footer/Footer";
+import Footer from "./Pages/Footer/Footer";
 
 const App = () => {
   return (
