@@ -6,10 +6,10 @@ import './index.css';
 
 const App = () => {
   return (
-    <Fragment>
+    <div className="home-page">
         <Home />
         <Footer />
-    </Fragment>
+    </div>
   );
 };
 
