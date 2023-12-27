@@ -1,12 +1,12 @@
 import React from "react";
-import instagram from "../../assets/Instagram.svg";
-import X from "../../Assets/X.svg";
+import facebook from "../assets/facebook.svg";
+import X from "../assets/X.svg";
 
 const Footer = () => {
   return (
     <div className="w-full border-t border-gray-800 border-opacity-10 gap-6 flex p-4 justify-end">
+      <img src={facebook} alt="facebook" />
       <img src={X} alt="X" />
-      <img src={instagram} alt="Instagram" />
     </div>
   );
 };
