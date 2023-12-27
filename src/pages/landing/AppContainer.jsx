@@ -2,8 +2,14 @@ import phoneLightVideo from "../../assets/phone-light.mp4";
 import logo from "../../assets/InviSm.svg";
 import logopng from "../../assets/Invi.png";
 import Footer from "../Footer";
+import { useNavigate } from "react-router";
+import React from "react";
 
 const AppContainer = () => {
+  const navigate = useNavigate();
+  const handleCreateEventClick = () => {
+    navigate("/create-event");
+  };
   return (
     <div className="bg-rose-50 bg-opacity-20">
       <div className="mx-auto p-4 flex flex-col justify-between h-screen max-w-5xl">
@@ -27,7 +33,10 @@ const AppContainer = () => {
               Set up an event page, invite friends and sell tickets. Host a
               memorable event today.
             </p>
-            <button className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none">
+            <button
+              onClick={handleCreateEventClick}
+              className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none"
+            >
               Create Your First Event
             </button>
           </div>
