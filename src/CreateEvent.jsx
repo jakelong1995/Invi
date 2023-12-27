@@ -1,7 +1,12 @@
 import React from "react";
+import EventName from "./EventName";
 
 const CreateEvent = () => {
-  return <div>CreateEvent</div>;
+  return (
+    <div>
+      <EventName />
+    </div>
+  );
 };
 
 export default CreateEvent;
