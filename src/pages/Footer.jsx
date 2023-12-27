@@ -1,6 +1,6 @@
 import React from "react";
-import facebook from "../../assets/facebook.svg";
-import X from "../../Assets/X.svg";
+import facebook from "../assets/facebook.svg";
+import X from "../assets/X.svg";
 
 const Footer = () => {
   return (
