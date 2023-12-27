@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const HomeComponent = lazy(() => import("../pages/landing/AppContainer"));
 const Landing = lazy(() => import("../pages/landing/AppContainer"));
-const EventComponent = lazy(() => import("../pages/event/create/AppContainer"));
+const EventComponent = lazy(() => import("../pages/event/create/CreateEvent"));
 const EventManagementComponent = lazy(() =>
   import("../pages/event/management/AppContainer")
 );

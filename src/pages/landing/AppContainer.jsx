@@ -8,7 +8,9 @@ import React from "react";
 const AppContainer = () => {
   const navigate = useNavigate();
   const handleCreateEventClick = () => {
-    navigate("/create-event");
+    React.startTransition(() => {
+      navigate("/create-event");
+    });
   };
   return (
     <div className="bg-rose-50 bg-opacity-20">
