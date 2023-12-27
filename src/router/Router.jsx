@@ -1,4 +1,4 @@
-import React, {lazy } from 'react';
+import React, {lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const HomeComponent = lazy(() => import("../pages/home/AppContainer"));
@@ -10,22 +10,38 @@ import ErrorPage from "./ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeComponent />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <HomeComponent />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />
   },
   {
     path: "/home",
-    element: <HomeComponent />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <HomeComponent />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />
   },
   {
     path: "/createEvent",
-    element: <EventComponent />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventComponent />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />
   },
   {
     path: "/eventManagement",
-    element: <EventManagementComponent />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventManagementComponent />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />
   },
 ]);
