@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-    path: "/createEvent",
+    path: "/create-event",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventComponent />
