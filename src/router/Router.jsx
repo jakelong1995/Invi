@@ -1,8 +1,8 @@
 import React, {lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const HomeComponent = lazy(() => import("../pages/landing/AppContainer"));
-const Landing = lazy(() => import("../pages/landing/AppContainer"));
+const HomeComponent = lazy(() => import("../pages/home/Home"));
+const Landing = lazy(() => import("../pages/landing/LandingPage"));
 const EventComponent = lazy(() => import("../pages/event/create/CreateEvent"));
 const EventManagementComponent = lazy(() =>
   import("../pages/event/management/AppContainer")
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
-        <HomeComponent />
+        <Landing />
       </Suspense>
     ),
     errorElement: <ErrorPage />

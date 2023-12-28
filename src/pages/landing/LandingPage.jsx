@@ -1,10 +1,10 @@
 import phoneLightVideo from "../../assets/phone-light.mp4";
 import logo from "../../assets/InviSm.svg";
 import logopng from "../../assets/Invi.png";
-import Footer from "./Footer";
+import Footer from "../Footer";
 import { useNavigate  } from "react-router-dom";
 
-const Home = () => {
+const LandingPage = () => {
   const navigate = useNavigate()
 
   const handleAddEvent = () =>{
@@ -50,4 +50,4 @@ const Home = () => {
   );
 };
 
-export default AppContainer;
+export default LandingPage;
