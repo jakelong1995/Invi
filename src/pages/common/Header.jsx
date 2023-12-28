@@ -4,6 +4,7 @@ import ticket from "../../assets/ticket.png";
 import searchImg from "../../assets/search.jpg";
 import bellImg from "../../assets/bell.svg";
 import userAvt from "../../assets/userAvt.png";
+import moonStar from "../../assets/moonStar.png";
 
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -63,9 +64,52 @@ const Header = () => {
             <button onClick={navHelp}>Open Help</button>
           </div>
         </Popup>
-        <img src={bellImg} alt="notifiIcon" style={{ height: 20 }} />
-        <img src={userAvt} alt="userAvt" style={{ height: 20 }} />
 
+        <Popup
+          trigger={
+            <button>
+              <img src={bellImg} alt="notifiIcon" style={{ height: 20 }} />
+            </button>
+          }
+          position="bottom right"
+        >
+          <div className="modalContent flex flex-col items-center text-center p-4 ">
+            <img
+              src={moonStar}
+              alt="moonStar"
+              style={{ height: 20, width: 20 }}
+              className="m-3"
+            />
+            <h6>It's Quiet Here</h6>
+            <p>Create an event and invite some friends.</p>
+          </div>
+        </Popup>
+
+        <Popup
+          trigger={
+            <button>
+              <img src={userAvt} alt="userAvt" style={{ height: 20 }} />
+            </button>
+          }
+          position="bottom right"
+        >
+          <div className="modalContent flex flex-col items-center text-center">
+            <button className="w-full hover:bg-gray-200 flex flex-col items-center">
+              <div className="userArea flex items-center ">
+                <div className="avtUser">
+                  <img src={userAvt} alt="userAvt" style={{ height: 30 }} />
+                </div>
+                <div className="infoUser">
+                  <p className="text-sm">User name</p>
+                  <p className="text-xs">Personal</p>
+                </div>
+              </div>
+            </button>
+            <button className="w-full hover:bg-gray-200">View Profile</button>
+            <button className="w-full hover:bg-gray-200">Settings</button>
+            <button className="w-full hover:bg-gray-200">Sign Out</button>
+          </div>
+        </Popup>
       </div>
     </div>
   );
