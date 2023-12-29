@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import calendar from "../../assets/calendar.png";
 
 const EmptyEvent = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -41,10 +42,11 @@ const EmptyEvent = () => {
         </label>
       </div>
 
-      <div className="contentComponent">
+      <div className="contentComponent flex flex-col items-center gap-6">
+        <img src={calendar} alt="calendar" style={{ height: 150, width: 150 }} />
         <h4>No Upcoming Events</h4>
         <p>You have no upcoming events. Why not host one?</p>
-        <button onClick={handleAddEvent}>+ Create event</button>
+        <button onClick={handleAddEvent} className="rounded border-2 p-1 ">+ Create event</button>
       </div>
     </div>
   );
