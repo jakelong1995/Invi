@@ -8,7 +8,7 @@ const LandingPage = () => {
   const navigate = useNavigate()
 
   const handleAddEvent = () =>{
-    navigate("/createEvent")
+    navigate("/create-event")
   }
   return (
     <div className="bg-rose-50 bg-opacity-20">
