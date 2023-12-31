@@ -9,6 +9,7 @@ const CreateEvent = () => {
     eventLocation: "",
     eventLink: "",
     requireApproval: "",
+    limit: "",
     capacity: "",
     public: "",
     image: "",
@@ -28,7 +29,7 @@ const CreateEvent = () => {
       <input
         type="text"
         placeholder="Event Name"
-        value={CreateEvent.EventName}
+        value={CreateEvent.eventName}
         onChange={handleChange}
         name="eventName"
         id="eventname"
@@ -36,7 +37,7 @@ const CreateEvent = () => {
       <input
         type="datetime"
         placeholder="Start Date"
-        value={CreateEvent.StartDate}
+        value={CreateEvent.startDate}
         onChange={handleChange}
         name="startDate"
         id="startdate"
@@ -44,7 +45,7 @@ const CreateEvent = () => {
       <input
         type="datetime"
         placeholder="End Date"
-        value={CreateEvent.EndDate}
+        value={CreateEvent.endDate}
         onChange={handleChange}
         name="endDate"
         id="enddate"
@@ -52,7 +53,7 @@ const CreateEvent = () => {
       <input
         type="text"
         placeholder="Time Zone"
-        value={CreateEvent.TimeZone}
+        value={CreateEvent.timeZone}
         onChange={handleChange}
         name="timeZone"
         id="timezone"
@@ -60,7 +61,7 @@ const CreateEvent = () => {
       <input
         type="url"
         placeholder="Event Link"
-        value={CreateEvent.EventLink}
+        value={CreateEvent.eventLink}
         onChange={handleChange}
         name="eventLink"
         id="eventlink"
@@ -68,7 +69,7 @@ const CreateEvent = () => {
       <input
         type="text"
         placeholder="Event Location"
-        value={CreateEvent.EventLocation}
+        value={CreateEvent.eventLocation}
         onChange={handleChange}
         name="eventLocation"
         id="eventlocation"
@@ -78,7 +79,7 @@ const CreateEvent = () => {
         <label class="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
-            value={CreateEvent.RequireApproval}
+            value={CreateEvent.requireApproval}
             onChange={handleChange}
             name="requireApproval"
             id="requireapproval"
@@ -92,14 +93,22 @@ const CreateEvent = () => {
         <label class="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
-            value={CreateEvent.Capacity}
+            value={CreateEvent.limit}
             onChange={handleChange}
-            name="capacity"
-            id="capacity"
+            name="limit"
+            id="limit"
             class="sr-only peer"
           />
           <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
         </label>
+        <input
+          type="number"
+          placeholder="Max no. of people"
+          value={CreateEvent.capacity}
+          onChange={handleChange}
+          name="capacity"
+          id="capacity"
+        />
       </div>
       <button type="submit">Submit</button>
     </>
