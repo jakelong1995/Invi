@@ -8,12 +8,12 @@ const CreateEvent = () => {
     timeZone: "",
     eventLocation: "",
     eventLink: "",
-    requireApproval: Boolean,
-    capacityGuest: "",
-    typeEvent: Boolean,
-    imageInvit: "",
-    Color: "",
-    Typeface: "",
+    requireApproval: "",
+    capacity: "",
+    public: "",
+    image: "",
+    color: "",
+    typeface: "",
   });
   const handleChange = (e) => {
     const changedField = e.target.name;
@@ -30,7 +30,7 @@ const CreateEvent = () => {
         placeholder="Event Name"
         value={CreateEvent.EventName}
         onChange={handleChange}
-        name="EventName"
+        name="eventName"
         id="eventname"
       />
       <input
@@ -38,7 +38,7 @@ const CreateEvent = () => {
         placeholder="Start Date"
         value={CreateEvent.StartDate}
         onChange={handleChange}
-        name="StartDate"
+        name="startDate"
         id="startdate"
       />
       <input
@@ -46,7 +46,7 @@ const CreateEvent = () => {
         placeholder="End Date"
         value={CreateEvent.EndDate}
         onChange={handleChange}
-        name="EndDate"
+        name="endDate"
         id="enddate"
       />
       <input
@@ -54,7 +54,7 @@ const CreateEvent = () => {
         placeholder="Time Zone"
         value={CreateEvent.TimeZone}
         onChange={handleChange}
-        name="TimeZone"
+        name="timeZone"
         id="timezone"
       />
       <input
@@ -62,7 +62,7 @@ const CreateEvent = () => {
         placeholder="Event Link"
         value={CreateEvent.EventLink}
         onChange={handleChange}
-        name="EventLink"
+        name="eventLink"
         id="eventlink"
       />
       <input
@@ -70,7 +70,7 @@ const CreateEvent = () => {
         placeholder="Event Location"
         value={CreateEvent.EventLocation}
         onChange={handleChange}
-        name="EventLocation"
+        name="eventLocation"
         id="eventlocation"
       />
       <div>
@@ -80,7 +80,7 @@ const CreateEvent = () => {
             type="checkbox"
             value={CreateEvent.RequireApproval}
             onChange={handleChange}
-            name="RequireApproval"
+            name="requireApproval"
             id="requireapproval"
             className="sr-only peer"
           />
@@ -94,7 +94,7 @@ const CreateEvent = () => {
             type="checkbox"
             value={CreateEvent.Capacity}
             onChange={handleChange}
-            name="Capacity"
+            name="capacity"
             id="capacity"
             class="sr-only peer"
           />
