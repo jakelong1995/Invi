@@ -11,18 +11,17 @@ const CreateEvent = () => {
     requireApproval: "",
     limit: "",
     capacity: "",
-    public: "",
     image: "",
     color: "",
-    typeface: "",
+    typeFace: "",
   });
   const handleChange = (e) => {
-    const changedField = e.target.name;
-    const newValue = e.target.value;
     setFormData((currData) => {
-      currData[changedField] = newValue;
-      return { ...currData };
+      return { ...currData, [e.target.name]: e.target.value };
     });
+  };
+  const handleSubmit = () => {
+    console.log(formData);
   };
   return (
     <>
@@ -110,21 +109,31 @@ const CreateEvent = () => {
         name="capacity"
         id="capacity"
       />
-      <div>
-        <div>Publicity</div>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            value={CreateEvent.public}
-            onChange={handleChange}
-            name="public"
-            id="public"
-            class="sr-only peer"
-          />
-          <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-        </label>
-      </div>
-      <button type="submit">Submit</button>
+      <input
+        type="image"
+        src=""
+        value={CreateEvent.image}
+        onChange={handleChange}
+        alt="image"
+        name="image"
+        id="image"
+      />
+      <input
+        type="color"
+        value={CreateEvent.color}
+        onChange={handleChange}
+        name="color"
+        id="color"
+      />
+      <input
+        type="text"
+        placeholder="Typeface"
+        value={CreateEvent.typeFace}
+        onChange={handleChange}
+        name="typeFace"
+        id="typeFace"
+      />
+      <button onClick={handleSubmit}>Submit</button>
     </>
   );
 };
