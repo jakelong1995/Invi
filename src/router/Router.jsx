@@ -1,4 +1,4 @@
-import React, {lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const HomeComponent = lazy(() => import("../pages/home/Home"));
@@ -9,6 +9,7 @@ const EventManagementComponent = lazy(() =>
 );
 
 import ErrorPage from "./ErrorPage";
+import UserPage from "../pages/userpage/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         <Landing />
       </Suspense>
     ),
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: "/home",
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         <HomeComponent />
       </Suspense>
     ),
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: "/create-event",
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
         <EventComponent />
       </Suspense>
     ),
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: "/eventManagement",
@@ -45,7 +46,16 @@ const router = createBrowserRouter([
         <EventManagementComponent />
       </Suspense>
     ),
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/user-page",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <UserPage />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />,
   },
 ]);
 
