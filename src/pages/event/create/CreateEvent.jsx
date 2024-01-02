@@ -20,8 +20,10 @@ const CreateEvent = () => {
       return { ...currData, [e.target.name]: e.target.value };
     });
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(formData);
+    addItem(formData);
   };
   return (
     <>
