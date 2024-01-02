@@ -1,8 +1,8 @@
-import React, { lazy } from "react";
+import React, {lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const HomeComponent = lazy(() => import("../pages/landing/AppContainer"));
-const Landing = lazy(() => import("../pages/landing/AppContainer"));
+const HomeComponent = lazy(() => import("../pages/home/Home"));
+const Landing = lazy(() => import("../pages/landing/LandingPage"));
 const EventComponent = lazy(() => import("../pages/event/create/CreateEvent"));
 const EventManagementComponent = lazy(() =>
   import("../pages/event/management/EventManagement")
@@ -13,23 +13,39 @@ import ErrorPage from "./ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />,
-    errorElement: <ErrorPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Landing />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />
   },
   {
     path: "/home",
-    element: <HomeComponent />,
-    errorElement: <ErrorPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <HomeComponent />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />
   },
   {
     path: "/create-event",
-    element: <EventComponent />,
-    errorElement: <ErrorPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventComponent />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />
   },
   {
     path: "/eventManagement",
-    element: <EventManagementComponent />,
-    errorElement: <ErrorPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventManagementComponent />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />
   },
 ]);
 
