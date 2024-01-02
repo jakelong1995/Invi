@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import CreateEvent from "../event/create/CreateEvent";
 const UserPage = () => {
   const [items, setItems] = useState([
     {
@@ -17,7 +18,12 @@ const UserPage = () => {
       typeFace: "",
     },
   ]);
-  return <div>{items.eventName}</div>;
+  const addItem = (item) => {
+    setItems((currItems) => {
+      return [...currItems, { ...items, id: 9 }];
+    });
+  };
+  return <div></div>;
 };
 
 export default UserPage;
