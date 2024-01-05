@@ -2,17 +2,17 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyANBm7V-oPfhIdIMLWCn4Y_axz_qJCU1Nc",
-  authDomain: "event-invitation-project.firebaseapp.com",
-  projectId: "event-invitation-project",
-  storageBucket: "event-invitation-project.appspot.com",
-  messagingSenderId: "1042078432457",
-  appId: "1:1042078432457:web:6db27212b7a0f597932118",
-  measurementId: "G-4YH7Y3L81B",
+  apiKey: "AIzaSyBPeKGMiGAabyTNxdcXLLwshA4BvyGfixk",
+  authDomain: "final-project-52295.firebaseapp.com",
+  projectId: "final-project-52295",
+  storageBucket: "final-project-52295.appspot.com",
+  messagingSenderId: "760679924783",
+  appId: "1:760679924783:web:131efb105ae81ee249f2da",
+  measurementId: "G-EGHETX4KTC"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { db };
+export { db, app };

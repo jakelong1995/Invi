@@ -9,6 +9,11 @@ const EventManagementComponent = lazy(() =>
 );
 
 import ErrorPage from "./ErrorPage";
+import LandingPage from '../pages/landing/LandingPage';
+
+const LoginComponent = lazy(() =>
+  import("../pages/authentication/Login")
+);
 
 const router = createBrowserRouter([
   {
@@ -39,10 +44,28 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-    path: "/eventManagement",
+    path: "/event-management",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventManagementComponent />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/login",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LoginComponent />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "*",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LandingPage />
       </Suspense>
     ),
     errorElement: <ErrorPage />
