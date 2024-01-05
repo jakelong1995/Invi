@@ -10,63 +10,78 @@ const EventManagementComponent = lazy(() =>
 
 import ErrorPage from "./ErrorPage";
 import LandingPage from '../pages/landing/LandingPage';
-
 const LoginComponent = lazy(() =>
   import("../pages/authentication/Login")
 );
+
+import Layout from './Layout';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <Landing />
-      </Suspense>
+      <Layout >
+        <Suspense fallback={<div>Loading...</div>}>
+          <Landing />
+        </Suspense>
+      </Layout>
+      
     ),
     errorElement: <ErrorPage />
   },
   {
     path: "/home",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <HomeComponent />
-      </Suspense>
+      <Layout >
+        <Suspense fallback={<div>Loading...</div>}>
+          <HomeComponent />
+        </Suspense>
+      </Layout>
+      
     ),
     errorElement: <ErrorPage />
   },
   {
     path: "/create-event",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <EventComponent />
-      </Suspense>
+      <Layout >
+        <Suspense fallback={<div>Loading...</div>}>
+          <EventComponent />
+        </Suspense>
+      </Layout>
     ),
     errorElement: <ErrorPage />
   },
   {
     path: "/event-management",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <EventManagementComponent />
-      </Suspense>
+      <Layout >
+          <Suspense fallback={<div>Loading...</div>}>
+          <EventManagementComponent />
+        </Suspense>
+      </Layout>
     ),
     errorElement: <ErrorPage />
   },
   {
     path: "/login",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <LoginComponent />
-      </Suspense>
+      <Layout >
+        <Suspense fallback={<div>Loading...</div>}>
+          <LoginComponent />
+        </Suspense>
+      </Layout>
     ),
     errorElement: <ErrorPage />
   },
   {
     path: "*",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <LandingPage />
-      </Suspense>
+      <Layout >
+        <Suspense fallback={<div>Loading...</div>}>
+          <LandingPage />
+        </Suspense>
+      </Layout>
     ),
     errorElement: <ErrorPage />
   },
