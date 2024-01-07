@@ -11,7 +11,7 @@ const LandingPage = () => {
     navigate("/create-event");
   };
   return (
-    <div className="bg-rose-50">
+    <div className="bg-white">
       <div className="mx-auto p-4 flex flex-col justify-between h-screen max-w-5xl">
         {/* navbar */}
         <div className="w-full justify-between items-center inline-flex">
