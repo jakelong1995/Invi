@@ -2,12 +2,22 @@ import { useState, useEffect } from "react";
 import { getAsync, createAsync } from "../../../api";
 
 const CreateEvent = () => {
+  const getDefaultStartDate = () => {
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 8, 0, 0, 0); // Round to the next hour
+    return currentDate.toISOString().slice(0, 16); // Format as "YYYY-MM-DDTHH:mm"
+  };
+  const getDefaultEndDate = () => {
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 9, 0, 0, 0); // Round to the next hour
+    return currentDate.toISOString().slice(0, 16); // Format as "YYYY-MM-DDTHH:mm"
+  };
   const [events, setEvents] = useState([]);
   const [formData, setFormData] = useState({
     eventName: "",
-    startDate: "",
-    endDate: "",
-    timeZone: "",
+    startDate: getDefaultStartDate(),
+    endDate: getDefaultEndDate(),
+    eventOnline: false,
     eventLink: "",
     eventLocation: "",
     requireApproval: false,
@@ -18,8 +28,9 @@ const CreateEvent = () => {
   });
 
   const handleChange = (e) => {
+    const { name, type, value, checked } = e.target;
     setFormData((prevData) => {
-      return { ...prevData, [e.target.name]: e.target.value };
+      return { ...prevData, [name]: type === "checkbox" ? checked : value };
     });
   };
 
@@ -58,14 +69,13 @@ const CreateEvent = () => {
 
       // Refetch the updated events data after adding a new event
       const updatedEventsData = await getAsync("event-management");
-      setEvents(updatedEventsData);
+      setEvents(updatedEventsDsata);
 
       // Clear the form after adding the event
       setFormData({
         eventName: "",
         startDate: "",
         endDate: "",
-        timeZone: "",
         eventLink: "",
         eventLocation: "",
         requireApproval: false,
@@ -80,18 +90,10 @@ const CreateEvent = () => {
   };
 
   return (
-    <form className="bg-gray-400">
-      {/* <h1>Event List</h1>
-      <ul>
-        {events.map((event) => (
-          <li key={event.id}>{event.eventName}</li>
-          // Display other event properties as needed
-        ))}
-      </ul> */}
-
-      {/* User input form */}
-      <div className="bg-white m-4 p-4">
+    <form className="bg-white m-4 p-4 rounded-lg flex">
+      <div className="flex flex-col">
         <input
+          className="font-semibold text-3xl text-gray-700 placeholder-gray-300 mb-6"
           type="text"
           placeholder="Event Name"
           value={formData.eventName}
@@ -99,46 +101,76 @@ const CreateEvent = () => {
           name="eventName"
           id="eventname"
         />
-        <input
-          type="datetime-local"
-          placeholder="Start Date"
-          value={formData.startDate}
-          onChange={handleChange}
-          name="startDate"
-          id="startdate"
-        />
-        <input
-          type="datetime-local"
-          placeholder="End Date"
-          value={formData.endDate}
-          onChange={handleChange}
-          name="endDate"
-          id="enddate"
-        />
-        <input
-          type="text"
-          placeholder="Time Zone"
-          value={formData.timeZone}
-          onChange={handleChange}
-          name="timeZone"
-          id="timezone"
-        />
-        <input
-          type="url"
-          placeholder="Event Link"
-          value={formData.eventLink}
-          onChange={handleChange}
-          name="eventLink"
-          id="eventlink"
-        />
-        <input
-          type="text"
-          placeholder="Event Location"
-          value={formData.eventLocation}
-          onChange={handleChange}
-          name="eventLocation"
-          id="eventlocation"
-        />
+
+        <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col mb-4">
+          <div className="flex pl-1 justify-between items-center">
+            <div>Start</div>
+            <input
+              className="bg-gray-200 p-2 rounded"
+              type="datetime-local"
+              placeholder="Start Date"
+              value={formData.startDate}
+              onChange={handleChange}
+              name="startDate"
+              id="startdate"
+            />
+          </div>
+
+          <div className="flex pl-1 justify-between items-center">
+            <div>End</div>
+            <input
+              className="bg-gray-200 p-2 rounded"
+              type="datetime-local"
+              placeholder="End Date"
+              value={formData.endDate}
+              onChange={handleChange}
+              name="endDate"
+              id="enddate"
+            />
+          </div>
+        </div>
+
+        <div className="flex gap-4 mb-4">
+          <div>Online Event ?</div>
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              value={formData.eventOnline}
+              onChange={handleChange}
+              name="eventOnline"
+              id="eventonline"
+              className="sr-only peer"
+            />
+            <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          </label>
+        </div>
+
+        {formData.eventOnline ? (
+          // Render Event Link field if eventOnline is true
+          <input
+            className="bg-gray-100 p-4 rounded-lg mb-4"
+            type="url"
+            placeholder="Event Link"
+            value={formData.eventLink}
+            onChange={handleChange}
+            name="eventLink"
+            id="eventlink"
+          />
+        ) : (
+          // Render Event Location field if eventOnline is false
+          <input
+            className="bg-gray-100 p-4 rounded-lg mb-4"
+            type="text"
+            placeholder="Event Location"
+            value={formData.eventLocation}
+            onChange={handleChange}
+            name="eventLocation"
+            id="eventlocation"
+          />
+        )}
+        <div className="text-sm font-medium text-gray-500 mb-2">
+          Event Options
+        </div>
         <div>
           <div>Require Approval </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -161,6 +193,9 @@ const CreateEvent = () => {
           name="capacity"
           id="capacity"
         />
+      </div>
+
+      <div>
         <input
           type="image"
           src=""
@@ -172,7 +207,7 @@ const CreateEvent = () => {
         />
         <input
           type="color"
-          value={formData.color}
+          value={formData.color || "#000000"}
           onChange={handleChange}
           name="color"
           id="color"
