@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 const HomeComponent = lazy(() => import("../pages/home/Home"));
 const Landing = lazy(() => import("../pages/landing/LandingPage"));
@@ -11,7 +11,7 @@ const EventManagementComponent = lazy(() =>
 import ErrorPage from "./ErrorPage";
 import UserPage from "../pages/userpage/UserPage";
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
     element: (
@@ -57,8 +57,20 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
-]);
+];
 
-export default function Router() {
-  return <RouterProvider router={router} />;
-}
+const Router = () => (
+  <HashRouter>
+    <Routes>
+      {routes.map((route, index) => (
+        <Route
+          key={index}
+          path={route.path}
+          element={route.element}
+        />
+      ))}
+    </Routes>
+  </HashRouter>
+);
+
+export default Router;
