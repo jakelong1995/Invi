@@ -50,7 +50,8 @@ const CreateEvent = () => {
     fetchData();
   }, []);
 
-  const handleAdd = async () => {
+  const handleAdd = async (event) => {
+    event.preventDefault();
     try {
       // Create an event based on user input
       const eventData = {
@@ -79,6 +80,7 @@ const CreateEvent = () => {
         eventName: "",
         startDate: "",
         endDate: "",
+        eventOnline: false,
         eventLink: "",
         eventLocation: "",
         requireApproval: false,
