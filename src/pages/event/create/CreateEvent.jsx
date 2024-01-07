@@ -57,7 +57,7 @@ const CreateEvent = () => {
         eventName: formData.eventName,
         startDate: formData.startDate,
         endDate: formData.endDate,
-        timeZone: formData.timeZone,
+        eventOnline: formData.eventOnline,
         eventLink: formData.eventLink,
         eventLocation: formData.eventLocation,
         requireApproval: formData.requireApproval,
