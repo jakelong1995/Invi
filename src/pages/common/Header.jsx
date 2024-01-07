@@ -5,6 +5,7 @@ import searchImg from "../../assets/search.jpg";
 import bellImg from "../../assets/bell.svg";
 import userAvt from "../../assets/userAvt.png";
 import moonStar from "../../assets/moonStar.png";
+import Clock from "./clock";
 
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -36,7 +37,7 @@ const Header = () => {
         <button onClick={navigateHome}>Events</button>
       </div>
       <div className="extHome flex gap-4">
-        <p>Time clock</p>
+        <Clock />
         <button onClick={navEventCreate}>Create Event</button>
         <Popup
           trigger={
