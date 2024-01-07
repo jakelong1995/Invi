@@ -232,7 +232,7 @@ const CreateEvent = () => {
       </div>
 
       {/* Second column */}
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-6 w-full">
         <input
           className=" w-full rounded-lg"
           type="image"
