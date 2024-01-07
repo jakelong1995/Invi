@@ -72,7 +72,7 @@ const CreateEvent = () => {
 
       // Refetch the updated events data after adding a new event
       const updatedEventsData = await getAsync("event-management");
-      setEvents(updatedEventsDsata);
+      setEvents(updatedEventsData);
 
       // Clear the form after adding the event
       setFormData({

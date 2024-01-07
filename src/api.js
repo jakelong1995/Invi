@@ -1,6 +1,6 @@
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, Timestamp } from "firebase/firestore";
+import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc, Timestamp } from "firebase/firestore";
 import {db} from './firebase';
-
+// get data from firebase
 export const getAsync = async (collectionName) => {
     try {
         const taskColRef = collection(db, collectionName);
@@ -16,6 +16,9 @@ export const getAsync = async (collectionName) => {
     }
 };
 
+// add data to firebase
+//createAsync('event-management', {title: 'title', description: 'description'})
+
 export const createAsync = async (collectionName, data) => {
     try {
         await addDoc(collection(db, collectionName), data)
@@ -25,6 +28,8 @@ export const createAsync = async (collectionName, data) => {
     }
 };
 
+// update data to firebase
+// updateAsync('event-management','gTwQG8ggzTdIzDm8hovN', {completed: true, title: 'test123'} )
 export const updateAsync = async (collectionName, id, data) => {
     try {
         const docRef = doc(db, collectionName, id)
