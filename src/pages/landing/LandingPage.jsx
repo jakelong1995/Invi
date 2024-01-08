@@ -7,10 +7,6 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
   const navigate = useNavigate();
 
-  const handleAddEvent = () => {
-    navigate("/create-event");
-  };
-
   const handleLogin = () => {
     navigate("/sign-in");
   };
@@ -42,7 +38,7 @@ const LandingPage = () => {
               memorable event today.
             </p>
             <button
-              onClick={handleAddEvent}
+              onClick={handleLogin}
               className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none"
             >
               Create Your First Event

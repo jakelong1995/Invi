@@ -6,6 +6,14 @@ import bellImg from "../../assets/bell.svg";
 import userAvt from "../../assets/userAvt.png";
 import moonStar from "../../assets/moonStar.png";
 import Clock from "./clock";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { app } from "../../Firebase";
+import { useState } from "react";
 
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -13,7 +21,39 @@ import "reactjs-popup/dist/index.css";
 import { useNavigate } from "react-router-dom/dist";
 
 const Header = () => {
+  const [user, setUser] = useState();
+
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+
   const navigate = useNavigate();
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        if (loggedInUser?.displayName) {
+          localStorage.setItem("userName", loggedInUser.displayName);
+          navigate("/home");
+        }
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then((result) => {
+        console.log(result);
+        setUser(null);
+        navigate("/")
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
+
   const navigateHome = () => {
     navigate("/Home");
   };
@@ -101,14 +141,14 @@ const Header = () => {
                   <img src={userAvt} alt="userAvt" style={{ height: 30 }} />
                 </div>
                 <div className="infoUser">
-                  <p className="text-sm">User name</p>
+                  <p className="text-sm">{ localStorage.getItem("userName")}</p>
                   <p className="text-xs">Personal</p>
                 </div>
               </div>
             </button>
             <button className="w-full hover:bg-gray-200">View Profile</button>
             <button className="w-full hover:bg-gray-200">Settings</button>
-            <button className="w-full hover:bg-gray-200">Sign Out</button>
+            <button className="w-full hover:bg-gray-200" onClick={handleSignOut}>Sign Out</button>
           </div>
         </Popup>
       </div>
