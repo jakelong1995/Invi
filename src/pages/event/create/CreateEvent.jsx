@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { getAsync, createAsync } from "../../../api";
 import ThemeColor from "./ThemeColor";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 const CreateEvent = () => {
   const getDefaultStartDate = () => {
@@ -24,7 +28,7 @@ const CreateEvent = () => {
     eventLink: "",
     eventLocation: "",
     requireApproval: false,
-    capacity: 0,
+    capacity: "",
     image: "", // Assuming you want to upload an image
     color: "",
     typeFace: "",
@@ -52,6 +56,13 @@ const CreateEvent = () => {
 
   const handleAdd = async (event) => {
     event.preventDefault();
+
+    // Check if event name is provided
+    if (!formData.eventName.trim()) {
+      toast.error("Event Name is required");
+      return;
+    }
+
     try {
       // Create an event based on user input
       const eventData = {
@@ -84,7 +95,7 @@ const CreateEvent = () => {
         eventLink: "",
         eventLocation: "",
         requireApproval: false,
-        capacity: 0,
+        capacity: "",
         image: "",
         color: "",
         typeFace: "",
@@ -169,9 +180,9 @@ const CreateEvent = () => {
                 <div>Capacity</div>
               </div>
               <input
-                className="bg-gray-200 p-2 rounded"
+                className="bg-gray-200 p-2 rounded text-right w-28"
                 type="number"
-                placeholder="Max no. of people"
+                placeholder="Unlimited"
                 value={formData.capacity}
                 onChange={handleChange}
                 name="capacity"
@@ -198,7 +209,6 @@ const CreateEvent = () => {
                 <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4  dark:peer-focus:ring-gray-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-gray-800"></div>
               </label>
             </div>
-            <hr />
 
             {formData.eventOnline ? (
               // Render Event Link field if eventOnline is true
@@ -225,6 +235,7 @@ const CreateEvent = () => {
             )}
           </div>
         </div>
+
         <button
           onClick={handleAdd}
           className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none"
@@ -235,16 +246,21 @@ const CreateEvent = () => {
 
       {/* Second column */}
       <div className="flex flex-col gap-6 w-full">
-        <input
-          className=" w-full rounded-lg"
-          type="image"
-          src="/src/assets/youareinvited.webp"
-          value={formData.image}
-          onChange={handleChange}
-          alt="image"
-          name="image"
-          id="image"
-        />
+        <Popup
+          trigger={
+            <img
+              className=" w-full rounded-lg cursor-pointer"
+              src="/src/assets/youareinvited.webp"
+              alt="Image"
+            />
+          }
+          modal
+          nested
+          position="right center"
+          className="rounded-lg overflow-hidden h-fit"
+        >
+          <span> Modal content </span>
+        </Popup>
         <div className="flex flex-col gap-2">
           <div className="text-sm font-medium text-gray-500">Theme</div>
 
