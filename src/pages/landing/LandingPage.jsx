@@ -10,13 +10,21 @@ const LandingPage = () => {
   const handleAddEvent = () => {
     navigate("/create-event");
   };
+
+  const handleLogin = () => {
+    navigate("/sign-in");
+  };
+
   return (
     <div className="bg-white">
       <div className="mx-auto p-4 flex flex-col justify-between h-screen max-w-5xl">
         {/* navbar */}
         <div className="w-full justify-between items-center inline-flex">
           <img src={logo} alt="logo" className="w-10" />
-          <button className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold">
+          <button
+            onClick={handleLogin}
+            className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
+          >
             Sign In
           </button>
         </div>
