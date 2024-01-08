@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const HomeComponent = lazy(() => import("../pages/home/Home"));
 const Landing = lazy(() => import("../pages/landing/LandingPage"));
@@ -7,12 +7,13 @@ const EventComponent = lazy(() => import("../pages/event/create/CreateEvent"));
 const EventManagementComponent = lazy(() =>
   import("../pages/event/management/EventManagement")
 );
-const Login = lazy(() => import("../pages/login/Login"));
 
 import ErrorPage from "./ErrorPage";
-import UserPage from "../pages/userpage/UserPage";
+const LoginComponent = lazy(() => import("../pages/login/Login"));
 
-const routes = [
+import Layout from "./Layout";
+
+const router = createBrowserRouter([
   {
     path: "/",
     element: (
@@ -41,42 +42,38 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "/eventManagement",
+    path: "/event-management",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <EventManagementComponent />
-      </Suspense>
+      <Layout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EventManagementComponent />
+        </Suspense>
+      </Layout>
     ),
     errorElement: <ErrorPage />,
   },
   {
-    path: "/user-page",
+    path: "/login",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <UserPage />
-      </Suspense>
+      <Layout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <LoginComponent />
+        </Suspense>
+      </Layout>
     ),
     errorElement: <ErrorPage />,
   },
   {
-    path: "/sign-in",
+    path: "*",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
-        <Login />
+        <Landing />
       </Suspense>
     ),
     errorElement: <ErrorPage />,
   },
-];
+]);
 
-const Router = () => (
-  <HashRouter>
-    <Routes>
-      {routes.map((route, index) => (
-        <Route key={index} path={route.path} element={route.element} />
-      ))}
-    </Routes>
-  </HashRouter>
-);
-
-export default Router;
+export default function Router() {
+  return <RouterProvider router={router} />;
+}

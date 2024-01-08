@@ -3,12 +3,13 @@ import logo from "../../assets/InviSm.svg";
 import logopng from "../../assets/Invi.png";
 import Footer from "../common/Footer";
 import { useNavigate } from "react-router-dom";
+import Clock from "../common/Clock";
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate("/sign-in");
+    navigate("/login");
   };
 
   return (
@@ -17,6 +18,7 @@ const LandingPage = () => {
         {/* navbar */}
         <div className="w-full justify-between items-center inline-flex">
           <img src={logo} alt="logo" className="w-10" />
+          <Clock />
           <button
             onClick={handleLogin}
             className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
