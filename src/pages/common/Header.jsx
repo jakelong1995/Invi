@@ -47,7 +47,7 @@ const Header = () => {
       .then((result) => {
         console.log(result);
         setUser(null);
-        navigate("/")
+        navigate("/");
       })
       .catch((error) => {
         console.log("error", error.message);
@@ -55,7 +55,7 @@ const Header = () => {
   };
 
   const navigateHome = () => {
-    navigate("/Home");
+    navigate("/home");
   };
   const navEventCreate = () => {
     navigate("/create-event");
@@ -70,7 +70,9 @@ const Header = () => {
   return (
     <div className="menuHeader flex justify-between items-center">
       <div className="iconHome">
-        <img src={star} alt="star" style={{ height: 20 }} />
+        <button onClick={navigateHome}>
+          <img src={star} alt="star" style={{ height: 20 }} />
+        </button>
       </div>
       <div className="tabHome flex">
         <img src={ticket} alt="ticket" style={{ height: 20 }} />
@@ -141,14 +143,19 @@ const Header = () => {
                   <img src={userAvt} alt="userAvt" style={{ height: 30 }} />
                 </div>
                 <div className="infoUser">
-                  <p className="text-sm">{ localStorage.getItem("userName")}</p>
+                  <p className="text-sm">{localStorage.getItem("userName")}</p>
                   <p className="text-xs">Personal</p>
                 </div>
               </div>
             </button>
             <button className="w-full hover:bg-gray-200">View Profile</button>
             <button className="w-full hover:bg-gray-200">Settings</button>
-            <button className="w-full hover:bg-gray-200" onClick={handleSignOut}>Sign Out</button>
+            <button
+              className="w-full hover:bg-gray-200"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
           </div>
         </Popup>
       </div>
