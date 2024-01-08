@@ -78,8 +78,8 @@ const CreateEvent = () => {
       // Clear the form after adding the event
       setFormData({
         eventName: "",
-        startDate: "",
-        endDate: "",
+        startDate: getDefaultStartDate(),
+        endDate: getDefaultEndDate(),
         eventOnline: false,
         eventLink: "",
         eventLocation: "",
