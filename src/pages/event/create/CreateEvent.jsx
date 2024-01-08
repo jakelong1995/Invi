@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { getAsync, createAsync } from "../../../api";
 import ThemeColor from "./ThemeColor";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
+import ImageSelect from "./ImageSelect";
 
 const CreateEvent = () => {
   const getDefaultStartDate = () => {
@@ -107,7 +106,7 @@ const CreateEvent = () => {
 
   return (
     // form
-    <form className="bg-white m-4 p-4 rounded-lg flex gap-6 mx-auto justify-between h-fit max-w-5xl">
+    <form className="bg-white m-4 p-4 rounded-xl flex gap-6 mx-auto justify-between h-fit max-w-4xl">
       {/* left column */}
       <div className="flex flex-col w-full gap-6">
         {/* title */}
@@ -246,24 +245,9 @@ const CreateEvent = () => {
 
       {/* Second column */}
       <div className="flex flex-col gap-6 w-full">
-        <Popup
-          trigger={
-            <img
-              className=" w-full rounded-lg cursor-pointer"
-              src="/src/assets/youareinvited.webp"
-              alt="Image"
-            />
-          }
-          modal
-          nested
-          position="right center"
-          className="rounded-lg overflow-hidden h-fit"
-        >
-          <span> Modal content </span>
-        </Popup>
         <div className="flex flex-col gap-2">
+          <ImageSelect />
           <div className="text-sm font-medium text-gray-500">Theme</div>
-
           <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
             <ThemeColor />
             <hr />
