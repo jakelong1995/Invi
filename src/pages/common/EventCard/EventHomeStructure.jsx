@@ -17,7 +17,7 @@ const EventHomeStructure = () => {
     fetchData();
   }, []);
   return (
-    <div className="event-list">
+    <div className="event-list flex flex-col items-center w-full">
       {events &&
         events.length > 0 &&
         events.map((event) => (

@@ -58,7 +58,7 @@ const Header = () => {
           <span className="material-symbols-rounded mt-1 ml-2">star</span>
         </button>
       </div>
-      <div className="tabHome flex">
+      <div className="tabHome flex ml-24">
         <span className="material-symbols-rounded mr-1">local_activity</span>
         <button onClick={navigateHome}>Events</button>
       </div>

@@ -44,11 +44,9 @@ const router = createBrowserRouter([
   {
     path: "/Invi/event-management",
     element: (
-      <Layout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EventManagementComponent />
-        </Suspense>
-      </Layout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventManagementComponent />
+      </Suspense>
     ),
     errorElement: <ErrorPage />,
   },
