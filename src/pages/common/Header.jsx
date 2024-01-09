@@ -4,7 +4,8 @@ import moonStar from "../../assets/moonStar.png";
 import Clock from "./clock";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../../Firebase";
-import { useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -38,9 +39,18 @@ const Header = () => {
     window.open("https://help.lu.ma/");
   };
 
-  function search(e) {
-    e.preventDefault();
+  let [isOpen, setIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(
+    "/src/assets/youareinvited.webp"
+  );
+  function closeModal() {
+    setIsOpen(false);
   }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
   return (
     <div className="menuHeader flex justify-between items-center">
       <div className="iconHome">
@@ -52,45 +62,78 @@ const Header = () => {
         <span className="material-symbols-rounded mr-1">local_activity</span>
         <button onClick={navigateHome}>Events</button>
       </div>
-      <div className="extHome flex gap-4">
+      <div className="extHome static flex gap-4">
         <Clock />
         <button onClick={navEventCreate}>Create Event</button>
-        <Popup
-          trigger={
-            <button>
-              <span className="material-symbols-rounded mt-1 w-px h-px">
-                search
-              </span>
-            </button>
-          }
-          modal
-          nested
-          position="right center"
-        >
-          <div className="modalContent flex flex-col">
-            <div className="w-full max-w-xl flex text-xl">
-              <input
-                type="text"
-                className="w-full placeholder-gray-400 text-gray-900 p-2"
-                placeholder="Search for events, calendars and more..."
-                onChange={search}
-              />
+
+        <button type="button" onClick={openModal}>
+          <span className="material-symbols-rounded mt-1">search</span>
+        </button>
+        <Transition appear show={isOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black/25" />
+            </Transition.Child>
+
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 align-middle shadow-xl transition-all">
+                    <div className="mt-4 flex flex-wrap gap-4">
+                      <div className="w-full max-w-xl flex text-xl">
+                        <input
+                          type="text"
+                          className="w-full placeholder-gray-400 text-gray-900 p-2"
+                          placeholder="Search for events, calendars and more..."
+                        />
+                      </div>
+                      <hr />
+                      <label>Shortcuts</label>
+                      <button>Create Event</button>
+                      <button>Open Home</button>
+                      <button onClick={navHelp}>Open Help</button>
+                    </div>
+
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
             </div>
-            <hr />
-            <label>Shortcuts</label>
-            <button>Create Event</button>
-            <button>Open Home</button>
-            <button onClick={navHelp}>Open Help</button>
-          </div>
-        </Popup>
+          </Dialog>
+        </Transition>
 
         <Popup
           trigger={
             <button>
-              <span className="material-symbols-rounded mt-1 ml-4">notifications</span>
+              <span className="material-symbols-rounded">notifications</span>
             </button>
           }
           position="bottom right"
+          offsetX={17}
         >
           <div className="modalContent flex flex-col items-center text-center p-4 ">
             <img
@@ -107,7 +150,12 @@ const Header = () => {
         <Popup
           trigger={
             <button>
-              <img src={userAvt} alt="userAvt" style={{ height: 20 }} className="mr-3 -ml-1" />
+              <img
+                src={userAvt}
+                alt="userAvt"
+                style={{ height: 20 }}
+                className="mr-3 -ml-1"
+              />
             </button>
           }
           position="bottom right"
