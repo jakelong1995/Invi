@@ -8,4 +8,5 @@ const EventCard = ({id, eventName, startDate, eventLocation}) => {
   </div>;
 };
 
+
 export default EventCard;

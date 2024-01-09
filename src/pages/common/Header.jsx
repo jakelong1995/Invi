@@ -24,6 +24,7 @@ const Header = () => {
 
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   // const handleGoogleSignIn = () => {
   //   signInWithPopup(auth, googleProvider)
   //     .then((result) => {
@@ -37,13 +38,28 @@ const Header = () => {
   //       console.log("error", error.message);
   //     });
   // };
+=======
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        if (loggedInUser?.displayName) {
+          localStorage.setItem("userName", loggedInUser.displayName);
+          navigate("/Invi/home");
+        }
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
+>>>>>>> 43e789513b0405e68184c59bdfe209f3da9d5455
 
   const handleSignOut = () => {
     signOut(auth)
       .then((result) => {
         console.log(result);
         setUser(null);
-        navigate("/");
+        navigate("/Invi");
       })
       .catch((error) => {
         console.log("error", error.message);
@@ -51,10 +67,10 @@ const Header = () => {
   };
 
   const navigateHome = () => {
-    navigate("/home");
+    navigate("/Invi/home");
   };
   const navEventCreate = () => {
-    navigate("/create-event");
+    navigate("/Invi/create-event");
   };
   const navHelp = () => {
     window.open("https://help.lu.ma/");
