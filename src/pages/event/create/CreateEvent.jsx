@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { getAsync, createAsync } from "../../../api";
-import ThemeColor from "./ThemeColor";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImageSelect from "./ImageSelect";
+import ThemeColor from "./ThemeColor";
 
 const CreateEvent = () => {
   const getDefaultStartDate = () => {
