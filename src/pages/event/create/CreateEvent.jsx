@@ -4,8 +4,11 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImageSelect from "./ImageSelect";
 import ThemeColor from "./ThemeColor";
+import { colors } from "./colors";
 
 const CreateEvent = () => {
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
+
   const getDefaultStartDate = () => {
     const currentDate = new Date();
     currentDate.setHours(currentDate.getHours() + 8, 0, 0, 0); // Round to the next hour
@@ -107,7 +110,7 @@ const CreateEvent = () => {
   return (
     // form
     <form className="bg-white m-4 p-4 rounded-xl flex gap-6 mx-auto justify-between h-fit max-w-4xl">
-      {/* left column */}
+      {/* 1st column */}
       <div className="flex flex-col w-full gap-6">
         {/* title */}
         <input
@@ -237,7 +240,8 @@ const CreateEvent = () => {
 
         <button
           onClick={handleAdd}
-          className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none"
+          className="px-6 py-2 rounded-lg text-white text-lg font-medium hover:opacity-90 border-none"
+          style={{ backgroundColor: selectedColor.value }}
         >
           Add Event
         </button>
@@ -245,21 +249,9 @@ const CreateEvent = () => {
 
       {/* Second column */}
       <div className="flex flex-col gap-6 w-full">
-        <div className="flex flex-col gap-2">
-          <ImageSelect />
-          <div className="text-sm font-medium text-gray-500">Theme</div>
-          <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
-            <ThemeColor />
-            <hr />
-            <input
-              type="text"
-              placeholder="Typeface"
-              value={formData.typeFace}
-              onChange={handleChange}
-              name="typeFace"
-              id="typeFace"
-            />
-          </div>
+        <ImageSelect />
+        <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
+          <ThemeColor selected={selectedColor} setSelected={setSelectedColor} />
         </div>
       </div>
     </form>
