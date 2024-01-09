@@ -1,5 +1,5 @@
 import React from "react";
-import EventHomeStructure from "../common/EventHomeStructure";
+import EventHomeStructure from "../common/EventCard/EventHomeStructure";
 
 const UpcomingEvent = () => {
   return (
