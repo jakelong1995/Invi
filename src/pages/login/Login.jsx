@@ -23,7 +23,7 @@ const Login = () => {
         const loggedInUser = result.user;
         if (loggedInUser?.displayName) {
           localStorage.setItem("userName", loggedInUser.displayName);
-          navigate("/home");
+          navigate("/Invi/home");
         }
       })
       .catch((error) => {

@@ -10,9 +10,9 @@ const LandingPage = () => {
 
   const handleCreateFirstEvent = () => {
     if(localStorage.getItem("userName")?.length > 0){
-      navigate("/create-event");
+      navigate("/Invi/create-event");
     }else{
-      navigate("/login");
+      navigate("/Invi/login");
     }
   };
 

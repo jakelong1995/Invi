@@ -7,7 +7,7 @@ const HeaderLandingpage = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate("/login");
+    navigate("/Invi/login");
   };
 
   return (

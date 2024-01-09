@@ -34,7 +34,7 @@ const Header = () => {
         const loggedInUser = result.user;
         if (loggedInUser?.displayName) {
           localStorage.setItem("userName", loggedInUser.displayName);
-          navigate("/home");
+          navigate("/Invi/home");
         }
       })
       .catch((error) => {
@@ -47,7 +47,7 @@ const Header = () => {
       .then((result) => {
         console.log(result);
         setUser(null);
-        navigate("/");
+        navigate("/Invi");
       })
       .catch((error) => {
         console.log("error", error.message);
@@ -55,10 +55,10 @@ const Header = () => {
   };
 
   const navigateHome = () => {
-    navigate("/home");
+    navigate("/Invi/home");
   };
   const navEventCreate = () => {
-    navigate("/create-event");
+    navigate("/Invi/create-event");
   };
   const navHelp = () => {
     window.open("https://help.lu.ma/");

@@ -11,7 +11,7 @@ const EmptyEvent = () => {
   };
 
   const handleAddEvent = () => {
-    navigate("/create-event");
+    navigate("/Invi/create-event");
   };
   return (
     <div className="emptyComponent flex flex-col justify-center w-3/5 mx-auto">
