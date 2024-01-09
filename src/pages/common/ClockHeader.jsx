@@ -28,7 +28,7 @@ const Clock = () => {
     return () => clearInterval(intervalId);
   }, []);
   return (
-    <div className="mt-1">
+    <div className="mt-1 ml-96 -mr-80 pb-1">
       <p>{gmtTime}</p>
     </div>
   );

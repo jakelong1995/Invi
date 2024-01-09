@@ -3,7 +3,7 @@ import logo from "../../assets/InviSm.svg";
 import logopng from "../../assets/Invi.png";
 import Footer from "../common/Footer";
 import { useNavigate } from "react-router-dom";
-import Clock from "../common/Clock";
+import Clock from "../common/ClockHeader";
 
 const LandingPage = () => {
   const navigate = useNavigate();

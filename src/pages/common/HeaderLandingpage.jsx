@@ -1,4 +1,4 @@
-import Clock from "./clock";
+import ClockHeader from "./ClockHeader";
 import "./header.css";
 import logo from "../../assets/InviSm.svg";
 import { useNavigate } from "react-router-dom";
@@ -22,8 +22,7 @@ const Header = () => {
             <button onClick={() => navigateLandingPage()}>
               <img src={logo} alt="logo" className="w-10" />
             </button>
-            <Clock />
-
+            <ClockHeader />
             <button
               className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
               onClick={() => handleSignIn()}
