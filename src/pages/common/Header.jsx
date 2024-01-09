@@ -43,7 +43,7 @@ const Header = () => {
       .then((result) => {
         console.log(result);
         setUser(null);
-        navigate("/Invi");
+        navigate("/Invi/");
       })
       .catch((error) => {
         console.log("error", error.message);

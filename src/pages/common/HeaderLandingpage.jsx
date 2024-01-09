@@ -13,7 +13,7 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         localStorage.setItem("userName", "");
-        navigate("/");
+        navigate("/Invi/");
       })
       .catch((error) => {
         console.log("error", error.message);
@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   const handleSignIn = () => {
-    navigate("/login");
+    navigate("/Invi/login");
   };
 
   return (
@@ -32,26 +32,13 @@ const Header = () => {
           <div className="w-full justify-between items-center inline-flex">
             <img src={logo} alt="logo" className="w-10" />
             <Clock />
-            {localStorage.getItem("userName") !== "" ? (
-              <span>
-                <span className="pr-2">
-                  Hello, {localStorage.getItem("userName")}!
-                </span>
-                <button
-                  className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
-                  onClick={handleSignOut}
-                >
-                  Sign Out
-                </button>
-              </span>
-            ) : (
-              <button
-                className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
-                onClick={() => handleSignIn()}
-              >
-                Sign In
-              </button>
-            )}
+
+            <button
+              className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
+              onClick={() => handleSignIn()}
+            >
+              Sign In
+            </button>
           </div>
         </div>
       </div>
