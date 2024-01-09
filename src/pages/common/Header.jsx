@@ -2,12 +2,7 @@ import React from "react";
 import userAvt from "../../assets/userAvt.png";
 import moonStar from "../../assets/moonStar.png";
 import Clock from "./clock";
-import {
-  // GoogleAuthProvider,
-  getAuth,
-  // signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { app } from "../../Firebase";
 import { useState } from "react";
 
@@ -18,25 +13,8 @@ import { useNavigate } from "react-router-dom/dist";
 
 const Header = () => {
   const [user, setUser] = useState();
-
   const auth = getAuth(app);
-  // const googleProvider = new GoogleAuthProvider();
-
   const navigate = useNavigate();
-
-  // const handleGoogleSignIn = () => {
-  //   signInWithPopup(auth, googleProvider)
-  //     .then((result) => {
-  //       const loggedInUser = result.user;
-  //       if (loggedInUser?.displayName) {
-  //         localStorage.setItem("userName", loggedInUser.displayName);
-  //         navigate("/home");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log("error", error.message);
-  //     });
-  // };
 
   const handleSignOut = () => {
     signOut(auth)

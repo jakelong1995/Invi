@@ -1,27 +1,16 @@
 import Clock from "./clock";
-import { getAuth, signOut } from "firebase/auth";
 import "./header.css";
-import { app } from "../../Firebase";
 import logo from "../../assets/InviSm.svg";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const auth = getAuth(app);
   const navigate = useNavigate();
-
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        localStorage.setItem("userName", "");
-        navigate("/Invi/");
-      })
-      .catch((error) => {
-        console.log("error", error.message);
-      });
-  };
 
   const handleSignIn = () => {
     navigate("/Invi/login");
+  };
+  const navigateLandingPage = () => {
+    navigate("/Invi/");
   };
 
   return (
@@ -30,7 +19,9 @@ const Header = () => {
         <div className="mx-auto p-4 flex flex-col justify-between max-w-5xl">
           {/* navbar */}
           <div className="w-full justify-between items-center inline-flex">
-            <img src={logo} alt="logo" className="w-10" />
+            <button onClick={() => navigateLandingPage()}>
+              <img src={logo} alt="logo" className="w-10" />
+            </button>
             <Clock />
 
             <button
