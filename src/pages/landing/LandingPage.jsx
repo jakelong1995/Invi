@@ -8,8 +8,12 @@ import Clock from "../common/Clock";
 const LandingPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate("/login");
+  const handleCreateFirstEvent = () => {
+    if(localStorage.getItem("userName")?.length > 0){
+      navigate("/create-event");
+    }else{
+      navigate("/login");
+    }
   };
 
   return (
@@ -20,7 +24,7 @@ const LandingPage = () => {
           <img src={logo} alt="logo" className="w-10" />
           <Clock />
           <button
-            onClick={handleLogin}
+            onClick={handleCreateFirstEvent}
             className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
           >
             Sign In
@@ -40,7 +44,7 @@ const LandingPage = () => {
               memorable event today.
             </p>
             <button
-              onClick={handleLogin}
+              onClick={handleCreateFirstEvent}
               className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none"
             >
               Create Your First Event
