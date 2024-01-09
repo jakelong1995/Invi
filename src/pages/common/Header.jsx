@@ -133,7 +133,7 @@ const Header = () => {
             </button>
           }
           position="bottom right"
-          offsetX={17}
+          offsetX={-3}
         >
           <div className="modalContent flex flex-col items-center text-center p-4 ">
             <img
@@ -159,7 +159,7 @@ const Header = () => {
             </button>
           }
           position="bottom right"
-          offsetX={7}
+          offsetX={-7}
         >
           <div className="modalContent flex flex-col items-center text-center">
             <button className="w-full hover:bg-gray-200 flex flex-col items-center">

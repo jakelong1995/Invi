@@ -25,7 +25,10 @@ const EventCard = ({ id, eventName, startDate, eventLocation }) => {
         </div>
       </div>
       <div className="event-button relative bottom-9">
-        <button className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-xl inline-flex text-gray-500 text-sm font-semibold" onClick={navigateManageEvent}>
+        <button
+          className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-xl inline-flex text-gray-500 text-sm font-semibold"
+          onClick={navigateManageEvent}
+        >
           Manage Event
           <span className="material-symbols-rounded ml-0.5 -mb-3.5">
             arrow_forward
