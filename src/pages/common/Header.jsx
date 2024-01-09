@@ -87,7 +87,7 @@ const Header = () => {
         <Popup
           trigger={
             <button>
-              <span className="material-symbols-rounded">notifications</span>
+              <span className="material-symbols-rounded mt-1 ml-4">notifications</span>
             </button>
           }
           position="bottom right"
@@ -107,7 +107,7 @@ const Header = () => {
         <Popup
           trigger={
             <button>
-              <img src={userAvt} alt="userAvt" style={{ height: 20 }} />
+              <img src={userAvt} alt="userAvt" style={{ height: 20 }} className="mr-3 -ml-1" />
             </button>
           }
           position="bottom right"
