@@ -129,7 +129,7 @@ const Header = () => {
         <Popup
           trigger={
             <button>
-              <span className="material-symbols-rounded">notifications</span>
+              <span className="material-symbols-rounded mt-1 -ml-1.5">notifications</span>
             </button>
           }
           position="bottom right"
@@ -154,11 +154,12 @@ const Header = () => {
                 src={userAvt}
                 alt="userAvt"
                 style={{ height: 20 }}
-                className="mr-3 -ml-1"
+                className="mr-3 -ml-1 -mt-0.5"
               />
             </button>
           }
           position="bottom right"
+          offsetX={7}
         >
           <div className="modalContent flex flex-col items-center text-center">
             <button className="w-full hover:bg-gray-200 flex flex-col items-center">
