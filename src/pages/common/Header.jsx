@@ -1,15 +1,11 @@
 import React from "react";
-import star from "../../assets/star.png";
-import ticket from "../../assets/ticket.png";
-import searchImg from "../../assets/search.jpg";
-import bellImg from "../../assets/bell.svg";
 import userAvt from "../../assets/userAvt.png";
 import moonStar from "../../assets/moonStar.png";
 import Clock from "./clock";
 import {
-  GoogleAuthProvider,
+  // GoogleAuthProvider,
   getAuth,
-  signInWithPopup,
+  // signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { app } from "../../Firebase";
@@ -24,23 +20,23 @@ const Header = () => {
   const [user, setUser] = useState();
 
   const auth = getAuth(app);
-  const googleProvider = new GoogleAuthProvider();
+  // const googleProvider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
 
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const loggedInUser = result.user;
-        if (loggedInUser?.displayName) {
-          localStorage.setItem("userName", loggedInUser.displayName);
-          navigate("/home");
-        }
-      })
-      .catch((error) => {
-        console.log("error", error.message);
-      });
-  };
+  // const handleGoogleSignIn = () => {
+  //   signInWithPopup(auth, googleProvider)
+  //     .then((result) => {
+  //       const loggedInUser = result.user;
+  //       if (loggedInUser?.displayName) {
+  //         localStorage.setItem("userName", loggedInUser.displayName);
+  //         navigate("/home");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log("error", error.message);
+  //     });
+  // };
 
   const handleSignOut = () => {
     signOut(auth)
@@ -71,11 +67,11 @@ const Header = () => {
     <div className="menuHeader flex justify-between items-center">
       <div className="iconHome">
         <button onClick={navigateHome}>
-          <img src={star} alt="star" style={{ height: 20 }} />
+          <span className="material-symbols-rounded mt-1 ml-2">star</span>
         </button>
       </div>
       <div className="tabHome flex">
-        <img src={ticket} alt="ticket" style={{ height: 20 }} />
+        <span className="material-symbols-rounded mr-1">local_activity</span>
         <button onClick={navigateHome}>Events</button>
       </div>
       <div className="extHome flex gap-4">
@@ -84,7 +80,9 @@ const Header = () => {
         <Popup
           trigger={
             <button>
-              <img src={searchImg} alt="search" style={{ height: 20 }} />
+              <span className="material-symbols-rounded mt-1 w-px h-px">
+                search
+              </span>
             </button>
           }
           modal
@@ -111,7 +109,7 @@ const Header = () => {
         <Popup
           trigger={
             <button>
-              <img src={bellImg} alt="notifiIcon" style={{ height: 20 }} />
+              <span className="material-symbols-rounded">notifications</span>
             </button>
           }
           position="bottom right"

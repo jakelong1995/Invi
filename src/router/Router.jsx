@@ -15,7 +15,7 @@ import Layout from "./Layout";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Invi/",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <Landing />
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/home",
+    path: "/Invi/home",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <HomeComponent />
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/create-event",
+    path: "/Invi/create-event",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventComponent />
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/event-management",
+    path: "/Invi/event-management",
     element: (
       <Layout>
         <Suspense fallback={<div>Loading...</div>}>
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/login",
+    path: "/Invi/login",
     element: (
       <Layout>
         <Suspense fallback={<div>Loading...</div>}>

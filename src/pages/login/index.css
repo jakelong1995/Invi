@@ -32,7 +32,7 @@
   transition: background-color 0.3s;
 }
 
-.google-button {
+.google-button{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,12 +50,12 @@
   background-color: #d3cbcb;
 }
 
-.text-signin {
+.text-signin{
   padding-bottom: 20px;
 }
 
 svg {
-  width: 16px;
+ width: 16px;
 }
 
 /* Add your media queries or additional styles as needed */

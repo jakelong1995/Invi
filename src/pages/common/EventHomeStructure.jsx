@@ -1,38 +1,38 @@
 import React from "react";
-import EventImg from "../../assets/youareinvited.webp";
 import { useState, useEffect } from "react";
-import { collection, query, onSnapshot } from "firebase/firestore";
-import { db } from "../../Firebase";
+import { getAsync } from "../../api";
+import EventImg from "../../assets/youareinvited.webp";
 import EventCard from "./EventCard";
 
 const EventHomeStructure = () => {
-  const [tasks, setTasks] = useState([]);
-
+  const [events, setEvents] = useState([]);
   useEffect(() => {
-    const taskColRef = query(collection(db, "task-management"));
-    onSnapshot(taskColRef, (snapshot) => {
-      setTasks(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      );
-    });
+    const fetchData = async () => {
+      try {
+        const eventsData = await getAsync("event-management");
+        setEvents(eventsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
   }, []);
-
   return (
     <div className="event-structure">
       <div className="event-info">
         <div className="event-detail">
-        {tasks.map((task) => (
-            <EventCard
-              id={task.id}
-              key={task.id}
-              eventName={task.eventName}
-              startDate={task.startDate}
-              eventLocation={task.eventLocation}
-            />
-          ))}
+          {events &&
+            events.length > 0 &&
+            events.map((event) => (
+              <div key={event.id}>
+                <EventCard
+                  id={event.id}
+                  eventName={event.data.eventName}
+                  startDate={event.data.startDate}
+                  eventLocation={event.data.eventLocation}
+                />
+              </div>
+            ))}
         </div>
         <div className="event-img">
           <img
