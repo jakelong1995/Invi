@@ -12,6 +12,7 @@ import ErrorPage from "./ErrorPage";
 const LoginComponent = lazy(() => import("../pages/login/Login"));
 
 import Layout from "./Layout";
+import EventHomeStructure from "../pages/common/EventCard/EventHomeStructure";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/Invi/event-management",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventHomeStructure />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/Invi/event-management/:itemId",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventManagementComponent />

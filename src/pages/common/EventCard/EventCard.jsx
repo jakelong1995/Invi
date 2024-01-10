@@ -1,29 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import EventImg from "../../../assets/youareinvited.webp";
-import { useState, useEffect } from "react";
-import { getAsync } from "../../../api";
+import { useParams } from "react-router-dom";
 
-const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
+const EventCard = ({ id, eventName, startDate, eventLocation , onClick}) => {
+  const { itemId } = useParams();
   const navigate = useNavigate();
-  const navigateManageEvent = () => {
-    navigate("/Invi/event-management");
+  const navigateManageEvent = (itemId) => {
+    navigate(`/Invi/event-management/${itemId}`);
   };
-
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const eventsData = await getAsync("event-management");
-        setEvents(eventsData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <div className="event-card flex flex-col w-96">
@@ -42,10 +27,10 @@ const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
           />
         </div>
       </div>
-      <div className="event-button relative bottom-9">
+      <div className="event-button relative bottom-9 ">
         <button
           className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-xl inline-flex text-gray-500 text-sm font-semibold"
-          onClick={navigateManageEvent}
+          onClick={navigateManageEvent(id)}
         >
           Manage Event
           <span className="material-symbols-rounded ml-0.5 -mb-3.5">
