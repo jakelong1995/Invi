@@ -1,17 +1,35 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import EventImg from "../../../assets/youareinvited.webp";
+import { useState, useEffect } from "react";
+import { getAsync } from "../../../api";
 
-const EventCard = ({ id, eventName, startDate, eventLocation }) => {
+const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
   const navigate = useNavigate();
-
   const navigateManageEvent = () => {
     navigate("/Invi/event-management");
   };
+
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const eventsData = await getAsync("event-management");
+        setEvents(eventsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="event-card flex flex-col w-96" id={id}>
+    <div className="event-card flex flex-col w-96">
       <div className="event-info relative flex w-full  ">
         <div className="event-detail w-full">
+          <p>{id}</p>
           <p>{startDate}</p>
           <h2>{eventName}</h2>
           <p>{eventLocation}</p>

@@ -1,12 +1,15 @@
 import React from "react";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
+import NavManagement from "./NavManagement";
 const EventManagement = () => {
-  return <div>
+  return (
+    <div>
       <Header />
+      <NavManagement />
       <Footer />
-    
-  </div>;
+    </div>
+  );
 };
 
 export default EventManagement;
