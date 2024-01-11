@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ToastContainer } from "react-toastify";
 import Router from "./router/Router";
-import ColorPicker from "./pages/event/create/ThemeColor";
 
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";

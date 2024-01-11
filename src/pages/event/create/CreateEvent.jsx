@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { getAsync, createAsync } from "../../../api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ImageSelect from "./ImageSelect";
 import ThemeColor from "./ThemeColor";
+import { colors } from "./colors";
 
 const CreateEvent = () => {
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
+
   const getDefaultStartDate = () => {
     const currentDate = new Date();
     currentDate.setHours(currentDate.getHours() + 8, 0, 0, 0); // Round to the next hour
@@ -24,7 +30,7 @@ const CreateEvent = () => {
     eventLink: "",
     eventLocation: "",
     requireApproval: false,
-    capacity: 0,
+    capacity: "",
     image: "", // Assuming you want to upload an image
     color: "",
     typeFace: "",
@@ -50,7 +56,15 @@ const CreateEvent = () => {
     fetchData();
   }, []);
 
-  const handleAdd = async () => {
+  const handleAdd = async (event) => {
+    event.preventDefault();
+
+    // Check if event name is provided
+    if (!formData.eventName.trim()) {
+      toast.error("Event Name is required");
+      return;
+    }
+
     try {
       // Create an event based on user input
       const eventData = {
@@ -77,12 +91,13 @@ const CreateEvent = () => {
       // Clear the form after adding the event
       setFormData({
         eventName: "",
-        startDate: "",
-        endDate: "",
+        startDate: getDefaultStartDate(),
+        endDate: getDefaultEndDate(),
+        eventOnline: false,
         eventLink: "",
         eventLocation: "",
         requireApproval: false,
-        capacity: 0,
+        capacity: "",
         image: "",
         color: "",
         typeFace: "",
@@ -94,8 +109,8 @@ const CreateEvent = () => {
 
   return (
     // form
-    <form className="bg-white m-4 p-4 rounded-lg flex gap-6 mx-auto justify-between h-fit max-w-5xl">
-      {/* left column */}
+    <form className="bg-white m-4 p-4 rounded-xl flex gap-6 mx-auto justify-between h-fit max-w-4xl">
+      {/* 1st column */}
       <div className="flex flex-col w-full gap-6">
         {/* title */}
         <input
@@ -167,9 +182,9 @@ const CreateEvent = () => {
                 <div>Capacity</div>
               </div>
               <input
-                className="bg-gray-200 p-2 rounded"
+                className="bg-gray-200 p-2 rounded text-right w-28"
                 type="number"
-                placeholder="Max no. of people"
+                placeholder="Unlimited"
                 value={formData.capacity}
                 onChange={handleChange}
                 name="capacity"
@@ -196,7 +211,6 @@ const CreateEvent = () => {
                 <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4  dark:peer-focus:ring-gray-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-gray-800"></div>
               </label>
             </div>
-            <hr />
 
             {formData.eventOnline ? (
               // Render Event Link field if eventOnline is true
@@ -223,9 +237,11 @@ const CreateEvent = () => {
             )}
           </div>
         </div>
+
         <button
           onClick={handleAdd}
-          className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none"
+          className="px-6 py-2 rounded-lg text-white text-lg font-medium hover:opacity-90 border-none"
+          style={{ backgroundColor: selectedColor.value }}
         >
           Add Event
         </button>
@@ -233,31 +249,9 @@ const CreateEvent = () => {
 
       {/* Second column */}
       <div className="flex flex-col gap-6 w-full">
-        <input
-          className=" w-full rounded-lg"
-          type="image"
-          src="/src/assets/youareinvited.webp"
-          value={formData.image}
-          onChange={handleChange}
-          alt="image"
-          name="image"
-          id="image"
-        />
-        <div className="flex flex-col gap-2">
-          <div className="text-sm font-medium text-gray-500">Theme</div>
-
-          <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
-            <ThemeColor />
-            <hr />
-            <input
-              type="text"
-              placeholder="Typeface"
-              value={formData.typeFace}
-              onChange={handleChange}
-              name="typeFace"
-              id="typeFace"
-            />
-          </div>
+        <ImageSelect />
+        <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
+          <ThemeColor selected={selectedColor} setSelected={setSelectedColor} />
         </div>
       </div>
     </form>
