@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 const HomeComponent = lazy(() => import("../pages/home/Home"));
 const Landing = lazy(() => import("../pages/landing/LandingPage"));
@@ -63,11 +63,7 @@ const Router = () => (
   <HashRouter>
     <Routes>
       {routes.map((route, index) => (
-        <Route
-          key={index}
-          path={route.path}
-          element={route.element}
-        />
+        <Route key={index} path={route.path} element={route.element} />
       ))}
     </Routes>
   </HashRouter>
