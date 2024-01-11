@@ -63,7 +63,7 @@ export default function ImageSelect() {
                     <img
                       className="w-36 rounded cursor-pointer"
                       src="/src/assets/goodvibes.webp"
-                      alt="you are invited"
+                      alt="goodvibes"
                       onClick={() =>
                         handleImageSelect("/src/assets/goodvibes.webp")
                       }
