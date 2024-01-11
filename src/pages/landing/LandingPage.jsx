@@ -3,6 +3,7 @@ import logo from "../../assets/InviSm.svg";
 import logopng from "../../assets/Invi.png";
 import Footer from "../common/Footer";
 import { useNavigate } from "react-router-dom";
+import phonelight from "../../assets/phone-light.webm";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const LandingPage = () => {
             muted
             className="w-full md:max-w-lg md:mx-auto bg-transparent"
           >
-            <source src={phoneLightVideo} type="video/mp4" />
+            <source src={phonelight} type="video/webm" />
             Your browser does not support the video tag.
           </video>
         </div>
