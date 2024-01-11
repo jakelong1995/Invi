@@ -5,8 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import ImageSelect from "./ImageSelect";
 import ThemeColor from "./ThemeColor";
 import { colors } from "../../common/Colors";
+import { useNavigate } from "react-router-dom";
 
 const CreateEvent = () => {
+  const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const getDefaultStartDate = () => {
@@ -105,6 +107,7 @@ const CreateEvent = () => {
     } catch (error) {
       console.error("Error adding event:", error);
     }
+    navigate("/invi/user-page");
   };
 
   return (
