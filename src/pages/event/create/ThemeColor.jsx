@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import { colors } from "./colors";
+import { colors } from "../../common/Colors";
 
 export default function ThemeColor({ selected, setSelected }) {
   return (

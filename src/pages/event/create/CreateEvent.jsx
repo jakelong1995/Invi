@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImageSelect from "./ImageSelect";
 import ThemeColor from "./ThemeColor";
-import { colors } from "./colors";
+import { colors } from "../../common/Colors";
 
 const CreateEvent = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
