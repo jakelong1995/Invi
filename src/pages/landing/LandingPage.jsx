@@ -41,7 +41,11 @@ const LandingPage = () => {
             </button>
           </div>
 
-          <video autoPlay muted className="w-full md:max-w-lg md:mx-auto">
+          <video
+            autoPlay
+            muted
+            className="w-full md:max-w-lg md:mx-auto bg-transparent"
+          >
             <source src={phoneLightVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
