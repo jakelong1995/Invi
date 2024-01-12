@@ -7,13 +7,13 @@ const EventComponent = lazy(() => import("../pages/event/create/CreateEvent"));
 const EventManagementComponent = lazy(() =>
   import("../pages/event/management/EventManagement.jsx")
 );
-
-import ErrorPage from "./ErrorPage";
 const UserPage = lazy(() => import("../pages/userpage/UserPage"));
+const LoginComponent = lazy(() => import("../pages/login/Login.jsx"));
+import ErrorPage from "./ErrorPage";
 
 const router = createBrowserRouter([
   {
-    path: "/invi",
+    path: "/",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <Landing />
@@ -53,6 +53,15 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <UserPage />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LoginComponent />
       </Suspense>
     ),
     errorElement: <ErrorPage />,

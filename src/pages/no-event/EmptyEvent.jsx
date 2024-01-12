@@ -11,7 +11,7 @@ const EmptyEvent = () => {
   };
 
   const handleAddEvent = () => {
-    navigate("/Invi/create-event");
+    navigate("/create-event");
   };
   return (
     <div className="emptyComponent flex flex-col justify-center w-3/5 mx-auto">
@@ -43,10 +43,16 @@ const EmptyEvent = () => {
       </div>
 
       <div className="contentComponent flex flex-col items-center gap-6">
-        <img src={calendar} alt="calendar" style={{ height: 150, width: 150 }} />
+        <img
+          src={calendar}
+          alt="calendar"
+          style={{ height: 150, width: 150 }}
+        />
         <h4>No Upcoming Events</h4>
         <p>You have no upcoming events. Why not host one?</p>
-        <button onClick={handleAddEvent} className="rounded border-2 p-1 ">+ Create event</button>
+        <button onClick={handleAddEvent} className="rounded border-2 p-1 ">
+          + Create event
+        </button>
       </div>
     </div>
   );

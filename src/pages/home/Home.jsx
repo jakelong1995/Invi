@@ -7,7 +7,7 @@ import PastEvent from "./PastEvent";
 
 const Home = () => {
   return (
-    <div>
+    <div className="mx-auto p-4 flex flex-col items-center">
       <Header />
       {/* <EmptyEvent /> */}
       <UpcomingEvent />

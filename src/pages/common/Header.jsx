@@ -129,7 +129,9 @@ const Header = () => {
         <Popup
           trigger={
             <button>
-              <span className="material-symbols-rounded mt-1 -ml-1.5">notifications</span>
+              <span className="material-symbols-rounded mt-1 -ml-1.5">
+                notifications
+              </span>
             </button>
           }
           position="bottom right"
