@@ -1,4 +1,3 @@
-import phoneLightVideo from "../../assets/phone-light.mp4";
 import logo from "../../assets/InviSm.svg";
 import logopng from "../../assets/Invi.png";
 import Footer from "../common/Footer";
