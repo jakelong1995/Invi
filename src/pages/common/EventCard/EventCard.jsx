@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import EventImg from "../../../assets/youareinvited.webp";
 import { useParams } from "react-router-dom";
 
-const EventCard = ({ id, eventName, startDate, eventLocation , onClick}) => {
+const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
   const navigate = useNavigate();
   const navigateManageEvent = (itemId) => {
     navigate(`/Invi/event-management/${itemId}`);

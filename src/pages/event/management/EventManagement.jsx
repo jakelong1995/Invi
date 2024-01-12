@@ -19,14 +19,16 @@ const EventManagement = () => {
     fetchData();
   }, []);
   const { itemId } = useParams();
-
+  const selectedEvent = events.find((event) => event.id === itemId);
   return (
     <div>
       <Header />
       <div className="navManagement">
         <div className="navTitle">
-          <div className="navEventName" id={itemId}>
-            <h2>{events.eventName}</h2>
+          <div className="navEventName">
+            <h2>
+              {selectedEvent ? selectedEvent.data.eventName : "Event Not Found"}
+            </h2>
           </div>
           <div className="toUserPage"></div>
         </div>

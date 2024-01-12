@@ -17,7 +17,7 @@ const EventHomeStructure = () => {
     };
     fetchData();
   }, []);
-  
+
   const navigate = useNavigate();
 
   const navigateManageEvent = (itemId) => {
