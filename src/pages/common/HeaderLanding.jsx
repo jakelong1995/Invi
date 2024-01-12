@@ -3,18 +3,15 @@ import Clock from "./clock";
 import Logo from "../../assets/InviSm.svg";
 import { useNavigate } from "react-router-dom";
 
-const Header1 = () => {
+const Header = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
     navigate("/login");
   };
-  const navigateHome = () => {
-    navigate("/home");
-  };
 
   return (
     <div className="w-full justify-between items-center inline-flex">
-      <button onClick={navigateHome}>
+      <button>
         <img src={Logo} alt="logo" className="w-10" />
       </button>
 
@@ -31,4 +28,4 @@ const Header1 = () => {
   );
 };
 
-export default Header1;
+export default Header;
