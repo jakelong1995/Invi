@@ -9,11 +9,14 @@ const EventManagementComponent = lazy(() =>
 );
 
 import ErrorPage from "./ErrorPage";
-import UserPage from "../pages/userpage/UserPage";
+const LoginComponent = lazy(() => import("../pages/login/Login"));
 
-const routes = [
+import Layout from "./Layout";
+import EventHomeStructure from "../pages/common/EventCard/EventHomeStructure";
+
+const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Invi/",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <Landing />
@@ -22,7 +25,7 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "/home",
+    path: "/Invi/home",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <HomeComponent />
@@ -31,7 +34,7 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "/create-event",
+    path: "/Invi/create-event",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventComponent />
@@ -40,7 +43,7 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "/eventManagement",
+    path: "/Invi/event-management/:itemId",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventManagementComponent />
@@ -49,10 +52,21 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "/user-page",
+    path: "/Invi/login",
+    element: (
+      <Layout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <LoginComponent />
+        </Suspense>
+      </Layout>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "*",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
-        <UserPage />
+        <Landing />
       </Suspense>
     ),
     errorElement: <ErrorPage />,

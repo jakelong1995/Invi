@@ -2,21 +2,32 @@ import logo from "../../assets/InviSm.svg";
 import logopng from "../../assets/Invi.png";
 import Footer from "../common/Footer";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import phonelight from "../../assets/phone-light.webm";
+=======
+import Clock from "../common/ClockHeader";
+>>>>>>> thinh
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
-  const handleAddEvent = () => {
-    navigate("/create-event");
+
+  const handleSignIn = () => {
+    navigate("/Invi/login");
   };
+
   return (
     <div className="bg-white">
       <div className="mx-auto p-4 flex flex-col justify-between h-screen max-w-5xl">
         {/* navbar */}
         <div className="w-full justify-between items-center inline-flex">
           <img src={logo} alt="logo" className="w-10" />
-          <button className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold">
+          <Clock />
+
+          <button
+            className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-full inline-flex text-gray-500 text-sm font-semibold"
+            onClick={() => handleSignIn()}
+          >
             Sign In
           </button>
         </div>
@@ -34,7 +45,7 @@ const LandingPage = () => {
               memorable event today.
             </p>
             <button
-              onClick={handleAddEvent}
+              onClick={handleSignIn}
               className="px-6 py-2 bg-gray-800 rounded-lg text-white text-lg font-medium hover:bg-gray-600 border-none"
             >
               Create Your First Event
