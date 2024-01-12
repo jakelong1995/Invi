@@ -1,22 +1,19 @@
 import React, { lazy, Suspense } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const HomeComponent = lazy(() => import("../pages/home/Home"));
 const Landing = lazy(() => import("../pages/landing/LandingPage"));
 const EventComponent = lazy(() => import("../pages/event/create/CreateEvent"));
 const EventManagementComponent = lazy(() =>
-  import("../pages/event/management/EventManagement")
+  import("../pages/event/management/EventManagement.jsx")
 );
 
 import ErrorPage from "./ErrorPage";
-const LoginComponent = lazy(() => import("../pages/login/Login"));
-
-import Layout from "./Layout";
-import EventHomeStructure from "../pages/common/EventCard/EventHomeStructure";
+const UserPage = lazy(() => import("../pages/userpage/UserPage"));
 
 const router = createBrowserRouter([
   {
-    path: "/Invi/",
+    path: "/invi",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <Landing />
@@ -25,7 +22,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/Invi/home",
+    path: "/home",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <HomeComponent />
@@ -34,7 +31,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/Invi/create-event",
+    path: "/create-event",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventComponent />
@@ -43,7 +40,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/Invi/event-management/:itemId",
+    path: "/eventManagement",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <EventManagementComponent />
@@ -52,35 +49,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/Invi/login",
-    element: (
-      <Layout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <LoginComponent />
-        </Suspense>
-      </Layout>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "*",
+    path: "/user-page",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
-        <Landing />
+        <UserPage />
       </Suspense>
     ),
     errorElement: <ErrorPage />,
   },
-];
+]);
 
-const Router = () => (
-  <HashRouter>
-    <Routes>
-      {routes.map((route, index) => (
-        <Route key={index} path={route.path} element={route.element} />
-      ))}
-    </Routes>
-  </HashRouter>
-);
-
-export default Router;
+export default function Router() {
+  return <RouterProvider router={router} />;
+}
