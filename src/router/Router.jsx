@@ -42,15 +42,15 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
-  {
-    path: "/Invi/event-management",
-    element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <EventHomeStructure />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage />,
-  },
+  // {
+  //   path: "/Invi/event-management",
+  //   element: (
+  //     <Suspense fallback={<div>Loading...</div>}>
+  //       <EventHomeStructure />
+  //     </Suspense>
+  //   ),
+  //   errorElement: <ErrorPage />,
+  // },
   {
     path: "/Invi/event-management/:itemId",
     element: (

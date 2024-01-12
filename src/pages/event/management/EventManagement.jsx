@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 
 const EventManagement = () => {
-  const { itemId } = useParams();
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -19,13 +18,14 @@ const EventManagement = () => {
     };
     fetchData();
   }, []);
+  const { itemId } = useParams();
 
   return (
     <div>
       <Header />
       <div className="navManagement">
         <div className="navTitle">
-          <div className="navEventName">
+          <div className="navEventName" id={itemId}>
             <h2>{events.eventName}</h2>
           </div>
           <div className="toUserPage"></div>

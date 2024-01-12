@@ -5,11 +5,6 @@ import { useNavigate } from "react-router-dom";
 import EventCard from "./EventCard";
 
 const EventHomeStructure = () => {
-  const navigate = useNavigate();
-
-  const navigateManageEvent = (itemId) => {
-    navigate(`/Invi/event-management/${itemId}`);
-  };
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +17,12 @@ const EventHomeStructure = () => {
     };
     fetchData();
   }, []);
+  
+  const navigate = useNavigate();
 
+  const navigateManageEvent = (itemId) => {
+    navigate(`/Invi/event-management/${itemId}`);
+  };
   return (
     <div className="event-list flex flex-col items-center w-full">
       {events &&
@@ -34,7 +34,7 @@ const EventHomeStructure = () => {
               eventName={event.data.eventName}
               startDate={event.data.startDate}
               eventLocation={event.data.eventLocation}
-              onClick={navigateManageEvent(event.id)}
+              onClick={() => navigateManageEvent(event.id)}
             />
           </div>
         ))}
