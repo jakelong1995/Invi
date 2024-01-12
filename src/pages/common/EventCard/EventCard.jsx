@@ -1,20 +1,46 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import EventImg from "../../../assets/youareinvited.webp";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getAsync } from "../../../api";
 
 const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
+// Slice Time out of String
+const [events, setEvents] = useState([]);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const eventsData = await getAsync("event-management");
+      setEvents(eventsData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  fetchData();
+}, []);
+
+// End of 1
+
   const navigate = useNavigate();
   const navigateManageEvent = (itemId) => {
     navigate(`/Invi/event-management/${itemId}`);
   };
 
+  // Slice Time out of string
+  // Function to extract time from a date string
+  const extractTime = (dateTimeString) => {
+    const dateObject = new Date(dateTimeString);
+    const hours = dateObject.getHours();
+    const minutes = dateObject.getMinutes();
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  };
+// End of 2
   return (
     <div className="event-card flex flex-col w-96">
       <div className="event-info relative flex w-full  ">
         <div className="event-detail w-full">
           <p>{id}</p>
-          <p>{startDate}</p>
+          <p>{extractTime(startDate)}</p>
           <h2>{eventName}</h2>
           <p>{eventLocation}</p>
         </div>
