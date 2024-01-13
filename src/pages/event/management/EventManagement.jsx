@@ -106,6 +106,30 @@ const EventManagement = () => {
             >
               Guests
             </button>
+            <button
+              onClick={() => handleTabClick("tab3")}
+              className={activeTab === "tab3" ? "active" : ""}
+            >
+              Registration
+            </button>
+            <button
+              onClick={() => handleTabClick("tab4")}
+              className={activeTab === "tab4" ? "active" : ""}
+            >
+              Emails
+            </button>
+            <button
+              onClick={() => handleTabClick("tab5")}
+              className={activeTab === "tab5" ? "active" : ""}
+            >
+              Insights
+            </button>
+            <button
+              onClick={() => handleTabClick("tab6")}
+              className={activeTab === "tab6" ? "active" : ""}
+            >
+              More
+            </button>
             {/* Add more buttons for additional tabs */}
           </div>
 
@@ -154,7 +178,11 @@ const EventManagement = () => {
                 </div>
               </div>
             )}
-            {activeTab === "tab2" && <div>Content for Tab 2</div>}
+            {activeTab === "tab2" && <div>Guest is under development. Coming soon</div>}
+            {activeTab === "tab3" && <div>Registration is under development. Coming soon</div>}
+            {activeTab === "tab4" && <div>Emails is under development. Coming soon</div>}
+            {activeTab === "tab5" && <div>Insights is under development. Coming soon</div>}
+            {activeTab === "tab6" && <div>More is under development. Coming soon</div>}
             {/* Add more content for additional tabs */}
           </div>
         </div>
