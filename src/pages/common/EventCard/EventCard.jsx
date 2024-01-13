@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import EventImg from "../../../assets/youareinvited.webp";
 import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 
-const EventCard = ({ id, eventName, startDate, eventLocation }) => {
+const EventCard = ({ id, eventName, startDate, eventLocation, image }) => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -96,7 +95,12 @@ const EventCard = ({ id, eventName, startDate, eventLocation }) => {
           </svg>
         </button>
       </div>
-      <img className="rounded-lg w-36" src={EventImg} alt="eventImg" />
+      <img
+        className="rounded-lg w-36"
+        src={image}
+        alt="eventImg"
+        onError={(e) => console.error("Error loading image:", e)}
+      />
     </div>
   );
 };
