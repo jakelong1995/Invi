@@ -47,7 +47,7 @@ const EventManagement = () => {
         </div>
 
         <div className="navPanel">
-          <div className="tab-buttons flex ">
+          <div className="tab-buttons flex gap-4">
             <button
               onClick={() => handleTabClick("tab1")}
               className={activeTab === "tab1" ? "active" : ""}
@@ -65,14 +65,15 @@ const EventManagement = () => {
 
           <div className="tab-content">
             {activeTab === "tab1" && (
-              <div className="overviewContent bg-red-700">
+              <div className="overviewContent">
                 <h4>When & Where</h4>
                 <div className="overviewDate">
-                {selectedEvent ? selectedEvent.data.startDate : "Event Not Found"}
+                  <span className="material-symbols-rounded">today</span>
+                  {selectedEvent
+                    ? selectedEvent.data.startDate
+                    : "Event Not Found"}
                 </div>
-                <div className="overviewLocation">
-
-                </div>
+                <div className="overviewLocation"></div>
                 <div></div>
               </div>
             )}
