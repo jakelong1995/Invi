@@ -32,7 +32,8 @@ const CreateEvent = () => {
     eventLocation: "",
     requireApproval: false,
     capacity: "",
-    image: "", // Assuming you want to upload an image
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/goodvibes.webp?alt=media&token=05eece16-0515-45c3-a570-aabaa6322fb7", // Assuming you want to upload an image
     color: "",
     typeFace: "",
   });
