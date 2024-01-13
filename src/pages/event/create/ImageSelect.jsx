@@ -4,7 +4,7 @@ import { Fragment, useState } from "react";
 export default function ImageSelect() {
   let [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(
-    "/src/assets/youareinvited.webp"
+    "./src/assets/youareinvited.webp"
   );
   function closeModal() {
     setIsOpen(false);
