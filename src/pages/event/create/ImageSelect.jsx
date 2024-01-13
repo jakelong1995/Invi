@@ -1,11 +1,15 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import youareinvited from "../../../assets/youareinvited.webp";
+import goodvibes from "../../../assets/goodvibes.webp";
+import hpnyb from "../../../assets/hpnyb.webp";
+import veryimportant from "../../../assets/veryimportant.webp";
+import zerorule from "../../../assets/zerorule.webp";
+import happynewyear from "../../../assets/happynewyear.webp";
 
-export default function ImageSelect() {
+export default function ImageSelect({selectedImg}) {
   let [isOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(
-    "./src/assets/youareinvited.webp"
-  );
+  const [selectedImage, setSelectedImage] = useState(youareinvited);
   function closeModal() {
     setIsOpen(false);
   }
@@ -62,50 +66,50 @@ export default function ImageSelect() {
                   <div className="mt-4 flex flex-wrap gap-4">
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/goodvibes.webp"
+                      src={goodvibes}
                       alt="goodvibes"
                       onClick={() =>
-                        handleImageSelect("/src/assets/goodvibes.webp")
+                        handleImageSelect(goodvibes)
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/youareinvited.webp"
+                      src={youareinvited}
                       alt="you are invited"
                       onClick={() =>
-                        handleImageSelect("/src/assets/youareinvited.webp")
+                        handleImageSelect(youareinvited)
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/hpnyb.webp"
+                      src={hpnyb}
                       alt="you are invited"
                       onClick={() =>
-                        handleImageSelect("/src/assets/hpnyb.webp")
+                        handleImageSelect(hpnyb)
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/veryimportant.webp"
+                      src={veryimportant}
                       alt="you are invited"
                       onClick={() =>
-                        handleImageSelect("/src/assets/veryimportant.webp")
+                        handleImageSelect(veryimportant)
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/zerorule.webp"
+                      src={zerorule}
                       alt="happy new year"
                       onClick={() =>
-                        handleImageSelect("/src/assets/zerorule.webp")
+                        handleImageSelect(zerorule)
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/happynewyear.webp"
+                      src={happynewyear}
                       alt="happy new year"
                       onClick={() =>
-                        handleImageSelect("/src/assets/happynewyear.webp")
+                        handleImageSelect(happynewyear)
                       }
                     />
                   </div>

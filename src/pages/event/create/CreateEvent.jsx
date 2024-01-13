@@ -8,7 +8,6 @@ import { colors } from "../../common/Colors";
 
 const CreateEvent = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
-
   const getDefaultStartDate = () => {
     const currentDate = new Date();
     currentDate.setHours(currentDate.getHours() + 8, 0, 0, 0); // Round to the next hour
@@ -32,7 +31,7 @@ const CreateEvent = () => {
     requireApproval: false,
     capacity: "",
     image: "", // Assuming you want to upload an image
-    color: "",
+    color: selectedColor,
     typeFace: "",
   });
 
@@ -99,7 +98,7 @@ const CreateEvent = () => {
         requireApproval: false,
         capacity: "",
         image: "",
-        color: "",
+        color: selectedColor,
         typeFace: "",
       });
     } catch (error) {
@@ -249,7 +248,7 @@ const CreateEvent = () => {
 
       {/* Second column */}
       <div className="flex flex-col gap-6 w-full">
-        <ImageSelect />
+        <ImageSelect selectedImage={formData.image} />
         <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
           <ThemeColor selected={selectedColor} setSelected={setSelectedColor} />
         </div>

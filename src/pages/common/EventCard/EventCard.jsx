@@ -4,7 +4,7 @@ import EventImg from "../../../assets/youareinvited.webp";
 import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 
-const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
+const EventCard = ({ id, eventName, startDate, eventLocation, color, onClick }) => {
   // Slice Time out of String
   const [events, setEvents] = useState([]);
   useEffect(() => {
@@ -35,7 +35,7 @@ const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
       .padStart(2, "0")} ${ampm}`;
   };
   return (
-    <div className="event-card flex flex-col w-96">
+    <div className="event-card flex flex-col w-96" style={{ color: color }} >
       <div className="event-info relative flex w-full  ">
         <div className="event-detail w-full">
           <p>{extractTime(startDate)}</p>
