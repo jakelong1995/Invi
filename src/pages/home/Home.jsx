@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="mx-auto p-4 flex flex-col items-center min-h-screen gap-4">
       <Header />
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-2xl">
         <EventHomeStructure />
         <Footer />
       </div>

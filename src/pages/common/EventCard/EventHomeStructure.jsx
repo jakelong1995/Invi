@@ -3,13 +3,11 @@ import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 import { useNavigate } from "react-router-dom";
 import EventCard from "./EventCard";
-import { Tab } from "@headlessui/react";
+import { Segmented } from "antd";
 
 const EventHomeStructure = () => {
   const [events, setEvents] = useState([]);
-  // set State for Tab
-  const [currentTab, setCurrentTab] = useState("upcoming");
-
+  const [currentTab, setCurrentTab] = useState("Upcoming"); // Set default tab
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,7 +23,7 @@ const EventHomeStructure = () => {
   const navigate = useNavigate();
 
   const navigateManageEvent = (itemId) => {
-    navigate(`/Invi/event-management/${itemId}`);
+    navigate(`/event-management/${itemId}`);
   };
 
   const getCurrentDate = () => {
@@ -48,18 +46,25 @@ const EventHomeStructure = () => {
   };
 
   const { upcomingEvents, pastEvents } = categorizeEvents(events);
+  const handleTabChange = (tab) => {
+    setCurrentTab(tab);
+  };
   return (
-    <div className="flex flex-col items-center p-2">
+    <div className="flex flex-col items-center p-2 mb-6">
+      {/* tab */}
       <div className="flex justify-between items-center w-full">
         <h1 className="font-semibold text-3xl">Events</h1>
-        <div className="w-40 flex gap-4 bg-gray-100 rounded-md p-1 font-medium text-sm ">
-          <button onClick={() => setCurrentTab("upcoming")}>Upcoming</button>
-          <button onClick={() => setCurrentTab("past")}>Past</button>
-        </div>
+        <Segmented
+          block
+          className="flex w-52 bg-gray-100 rounded-lg p-1 font-medium text-sm"
+          options={["Upcoming", "Past"]}
+          onChange={handleTabChange}
+        />
       </div>
 
-      {currentTab === "upcoming" && (
-        <div>
+      {/* contents */}
+      {currentTab === "Upcoming" && (
+        <div className="mt-8 flex flex-col gap-4 w-full max-w-2xl">
           {upcomingEvents.map((event) => (
             <div key={event.id}>
               <EventCard
@@ -74,8 +79,8 @@ const EventHomeStructure = () => {
         </div>
       )}
 
-      {currentTab === "past" && (
-        <div>
+      {currentTab === "Past" && (
+        <div className="mt-8 flex flex-col gap-4 w-full max-w-2xl">
           {pastEvents.map((event) => (
             <div key={event.id}>
               <EventCard
@@ -89,19 +94,6 @@ const EventHomeStructure = () => {
           ))}
         </div>
       )}
-      {/* {events &&
-        events.length > 0 &&
-        events.map((event) => (
-          <div key={event.id}>
-            <EventCard
-              id={event.id}
-              eventName={event.data.eventName}
-              startDate={event.data.startDate}
-              eventLocation={event.data.eventLocation}
-              onClick={() => navigateManageEvent(event.id)}
-            />
-          </div>
-        ))} */}
     </div>
   );
 };

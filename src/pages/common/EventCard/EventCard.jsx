@@ -4,8 +4,7 @@ import EventImg from "../../../assets/youareinvited.webp";
 import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 
-const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
-  // Slice Time out of String
+const EventCard = ({ id, eventName, startDate, eventLocation }) => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -18,56 +17,86 @@ const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
     };
     fetchData();
   }, []);
-
-  // End of 1
-
   const navigate = useNavigate();
   const navigateManageEvent = (itemId) => {
-    navigate(`/Invi/event-management/${itemId}`);
+    navigate(`/event-management/${itemId}`);
   };
 
   // Slice Time out of string
-  // Function to extract time from a date string
-  const extractTime = (dateTimeString) => {
+
+  // Function to extract date and time from a date string
+  const extractDateTime = (dateTimeString) => {
     const dateObject = new Date(dateTimeString);
-    const hours = dateObject.getHours();
-    const minutes = dateObject.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
-    return `${hours.toString().padStart(2, "0")}:${minutes
-      .toString()
-      .padStart(2, "0")} ${ampm}`;
+
+    // Options for formatting the date
+    const options = {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+
+    const formattedDate = dateObject.toLocaleDateString("en-US", options);
+
+    // Options for formatting the time
+    const timeOptions = {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
+
+    const formattedTime = dateObject.toLocaleTimeString("en-US", timeOptions);
+
+    return `${formattedDate}, ${formattedTime}`;
   };
-  // End of 2
+
   return (
-    <div className="event-card flex flex-col w-96">
-      <div className="event-info relative flex w-full  ">
-        <div className="event-detail w-full">
-          <p>{extractTime(startDate)}</p>
-          <h2>{eventName}</h2>
-          <p>
-            <span className="material-symbols-rounded">location_on</span>
-            {eventLocation}
-          </p>
+    <div className="flex bg-white justify-between p-4 rounded-xl w-full">
+      <div className="flex flex-col gap-2">
+        <p className="text-gray-500">{extractDateTime(startDate)}</p>
+        <h2 className="text-gray-800 font-semibold text-xl">{eventName}</h2>
+        <div className="flex gap-1 items-center text-gray-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+            />
+          </svg>
+          <p>{eventLocation}</p>
         </div>
-        <div className="event-img w-full">
-          <img
-            src={EventImg}
-            alt="eventImg"
-            style={{ height: 150, width: 150 }}
-          />
-        </div>
-      </div>
-      <div className="event-button relative bottom-9 ">
         <button
-          className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-xl inline-flex text-gray-500 text-sm font-semibold"
+          className="w-fit gap-2 px-3 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-lg inline-flex text-gray-500 text-sm font-semibold"
           onClick={() => navigateManageEvent(id)}
         >
-          Manage Event
-          <span className="material-symbols-rounded ml-0.5 -mb-3.5">
-            arrow_forward
-          </span>
+          <p> Manage Event</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              fillRule="evenodd"
+              d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+              clipRule="evenodd"
+            />
+          </svg>
         </button>
       </div>
+      <img className="rounded-lg w-36" src={EventImg} alt="eventImg" />
     </div>
   );
 };
