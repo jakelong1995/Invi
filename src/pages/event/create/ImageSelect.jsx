@@ -1,22 +1,29 @@
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 
-export default function ImageSelect() {
-  let [isOpen, setIsOpen] = useState(false);
+const ImageSelect = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(
-    "/src/assets/youareinvited.webp"
+    "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/goodvibes.webp?alt=media&token=05eece16-0515-45c3-a570-aabaa6322fb7"
   );
-  function closeModal() {
-    setIsOpen(false);
-  }
 
-  function openModal() {
-    setIsOpen(true);
-  }
-  const handleImageSelect = (image) => {
-    setSelectedImage(image);
-    closeModal();
+  const storage = getStorage(); // Initialize Firebase Storage
+
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+
+  const handleImageSelect = async (imagePath) => {
+    try {
+      const imageUrl = await getDownloadURL(ref(storage, imagePath));
+      setSelectedImage(imageUrl);
+      closeModal();
+    } catch (error) {
+      console.error("Error getting image from Firebase Storage:", error);
+    }
   };
+
   return (
     <>
       <button type="button" onClick={openModal}>
@@ -62,50 +69,62 @@ export default function ImageSelect() {
                   <div className="mt-4 flex flex-wrap gap-4">
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/goodvibes.webp"
+                      src="https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/goodvibes.webp?alt=media&token=05eece16-0515-45c3-a570-aabaa6322fb7"
                       alt="goodvibes"
                       onClick={() =>
-                        handleImageSelect("/src/assets/goodvibes.webp")
+                        handleImageSelect(
+                          "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/goodvibes.webp?alt=media&token=05eece16-0515-45c3-a570-aabaa6322fb7"
+                        )
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/youareinvited.webp"
+                      src="https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/youareinvited.webp?alt=media&token=8fe0bb8b-034d-4e62-bdad-91349be9459b"
                       alt="you are invited"
                       onClick={() =>
-                        handleImageSelect("/src/assets/youareinvited.webp")
+                        handleImageSelect(
+                          "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/youareinvited.webp?alt=media&token=8fe0bb8b-034d-4e62-bdad-91349be9459b"
+                        )
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/hpnyb.webp"
-                      alt="you are invited"
+                      src="https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/hpnyb.webp?alt=media&token=ae3cb56a-c9a7-4c8a-9a8d-85d5c57cff1a"
+                      alt="happy new year b"
                       onClick={() =>
-                        handleImageSelect("/src/assets/hpnyb.webp")
+                        handleImageSelect(
+                          "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/hpnyb.webp?alt=media&token=ae3cb56a-c9a7-4c8a-9a8d-85d5c57cff1a"
+                        )
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/veryimportant.webp"
-                      alt="you are invited"
+                      src="https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/veryimportant.webp?alt=media&token=dbf909d2-e5e4-4884-9c29-a8ade4df54da"
+                      alt="very important"
                       onClick={() =>
-                        handleImageSelect("/src/assets/veryimportant.webp")
+                        handleImageSelect(
+                          "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/veryimportant.webp?alt=media&token=dbf909d2-e5e4-4884-9c29-a8ade4df54da"
+                        )
                       }
                     />
                     <img
                       className="w-36 rounded cursor-pointer"
-                      src="/src/assets/zerorule.webp"
+                      src="https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/zerorule.webp?alt=media&token=da7890aa-bff9-4d08-95cf-a39137eff8a5"
+                      alt="zero rules"
+                      onClick={() =>
+                        handleImageSelect(
+                          "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/zerorule.webp?alt=media&token=da7890aa-bff9-4d08-95cf-a39137eff8a5"
+                        )
+                      }
+                    />
+                    <img
+                      className="w-36 rounded cursor-pointer"
+                      src="https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/happynewyear.webp?alt=media&token=7b02649d-f1b5-463a-9435-c2667d32f66d"
                       alt="happy new year"
                       onClick={() =>
-                        handleImageSelect("/src/assets/zerorule.webp")
-                      }
-                    />
-                    <img
-                      className="w-36 rounded cursor-pointer"
-                      src="/src/assets/happynewyear.webp"
-                      alt="happy new year"
-                      onClick={() =>
-                        handleImageSelect("/src/assets/happynewyear.webp")
+                        handleImageSelect(
+                          "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/happynewyear.webp?alt=media&token=7b02649d-f1b5-463a-9435-c2667d32f66d"
+                        )
                       }
                     />
                   </div>
@@ -127,4 +146,5 @@ export default function ImageSelect() {
       </Transition>
     </>
   );
-}
+};
+export default ImageSelect;
