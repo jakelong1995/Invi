@@ -1,7 +1,8 @@
 import React from "react";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
-import { useParams } from "react-router-dom";
+
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 
@@ -20,6 +21,11 @@ const EventManagement = () => {
   }, []);
 
   const { itemId } = useParams();
+  const navigate = useNavigate();
+  const navigateUserPage = () => {
+    navigate("/Invi/user-page");
+  };
+
   const selectedEvent = events.find((event) => event.id === itemId);
 
   const [activeTab, setActiveTab] = useState("tab1");
@@ -79,7 +85,7 @@ const EventManagement = () => {
           </div>
 
           <div className="toUserPage">
-            <button>
+            <button className="px-4 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-xl inline-flex text-gray-500 text-sm font-semibold" onClick={navigateUserPage}>
               Event Page
               <span className="material-symbols-rounded ">north_east</span>
             </button>

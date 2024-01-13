@@ -19,14 +19,11 @@ const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
     fetchData();
   }, []);
 
-  // End of 1
-
   const navigate = useNavigate();
   const navigateManageEvent = (itemId) => {
     navigate(`/Invi/event-management/${itemId}`);
   };
 
-  // Slice Time out of string
   // Function to extract time from a date string
   const extractTime = (dateTimeString) => {
     const dateObject = new Date(dateTimeString);
@@ -37,7 +34,6 @@ const EventCard = ({ id, eventName, startDate, eventLocation, onClick }) => {
       .toString()
       .padStart(2, "0")} ${ampm}`;
   };
-  // End of 2
   return (
     <div className="event-card flex flex-col w-96">
       <div className="event-info relative flex w-full  ">
