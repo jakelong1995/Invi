@@ -68,11 +68,11 @@ const EventManagement = () => {
               <div className="overviewContent bg-red-700">
                 <h4>When & Where</h4>
                 <div className="overviewDate">
-                {selectedEvent ? selectedEvent.data.startDate : "Event Not Found"}
+                  {selectedEvent
+                    ? selectedEvent.data.startDate
+                    : "Event Not Found"}
                 </div>
-                <div className="overviewLocation">
-
-                </div>
+                <div className="overviewLocation"></div>
                 <div></div>
               </div>
             )}

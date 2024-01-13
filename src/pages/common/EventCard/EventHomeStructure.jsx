@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 import { useNavigate } from "react-router-dom";
 import EventCard from "./EventCard";
+import { Tab } from "@headlessui/react";
 
 const EventHomeStructure = () => {
   const [events, setEvents] = useState([]);
@@ -48,12 +49,13 @@ const EventHomeStructure = () => {
 
   const { upcomingEvents, pastEvents } = categorizeEvents(events);
   return (
-    <div className="event-list flex flex-col items-center w-full">
-      <div>
-        <button onClick={() => setCurrentTab("upcoming")}>
-          Upcoming Events
-        </button>
-        <button onClick={() => setCurrentTab("past")}>Past Events</button>
+    <div className="flex flex-col items-center p-2">
+      <div className="flex justify-between items-center w-full">
+        <h1 className="font-semibold text-3xl">Events</h1>
+        <div className="w-40 flex gap-4 bg-gray-100 rounded-md p-1 font-medium text-sm ">
+          <button onClick={() => setCurrentTab("upcoming")}>Upcoming</button>
+          <button onClick={() => setCurrentTab("past")}>Past</button>
+        </div>
       </div>
 
       {currentTab === "upcoming" && (
