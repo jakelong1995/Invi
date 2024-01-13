@@ -107,7 +107,12 @@ const CreateEvent = () => {
       console.error("Error adding event:", error);
     }
   };
-
+  const handleImageSelect = (selectedImage) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      image: selectedImage,
+    }));
+  };
   return (
     <div className="mx-auto p-4 flex flex-col items-center min-h-screen gap-4">
       <Header />
@@ -254,7 +259,7 @@ const CreateEvent = () => {
 
         {/* Second column */}
         <div className="flex flex-col gap-6 w-full">
-          <ImageSelect />
+          <ImageSelect onImageSelect={handleImageSelect} />
           <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
             <ThemeColor
               selected={selectedColor}

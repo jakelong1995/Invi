@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-const ImageSelect = () => {
+const ImageSelect = ({ onImageSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(
     "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/goodvibes.webp?alt=media&token=05eece16-0515-45c3-a570-aabaa6322fb7"
@@ -16,8 +16,9 @@ const ImageSelect = () => {
 
   const handleImageSelect = async (imagePath) => {
     try {
-      const imageUrl = await getDownloadURL(ref(storage, imagePath));
-      setSelectedImage(imageUrl);
+      const image = await getDownloadURL(ref(storage, imagePath));
+      setSelectedImage(image);
+      onImageSelect(image);
       closeModal();
     } catch (error) {
       console.error("Error getting image from Firebase Storage:", error);
