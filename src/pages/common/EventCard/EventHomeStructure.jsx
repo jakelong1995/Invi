@@ -39,7 +39,9 @@ const EventHomeStructure = () => {
     const upcomingEvents = events.filter(
       (event) => event.data.startDate > currentDate
     );
-    const pastEvents = events.filter((event) => event.data.startDate <= currentDate);
+    const pastEvents = events.filter(
+      (event) => event.data.startDate <= currentDate
+    );
 
     return { upcomingEvents, pastEvents };
   };
