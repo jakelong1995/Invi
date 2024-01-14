@@ -1,6 +1,4 @@
 import React from "react";
-import userAvt from "../../assets/userAvt.png";
-import moonStar from "../../assets/moonStar.png";
 import Clock from "./clock";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../../Firebase";
