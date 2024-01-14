@@ -114,7 +114,7 @@ const CreateEvent = () => {
     <div className="mx-auto p-4 flex flex-col items-center min-h-screen gap-4">
       <Header />
       <div className="w-full max-w-3xl">
-        <form className="bg-white m-4 p-4 rounded-xl flex gap-6 mx-auto justify-between h-fit">
+        <form className="w-full bg-white m-4 p-4 rounded-xl flex gap-6 mx-auto justify-between h-fit">
           {/* 1st column */}
           <div className="flex flex-col w-full gap-6">
             {/* title */}
