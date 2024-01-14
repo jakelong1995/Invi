@@ -30,7 +30,8 @@ const CreateEvent = () => {
     eventLocation: "",
     requireApproval: false,
     capacity: "",
-    image: "", // Assuming you want to upload an image
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/goodvibes.webp?alt=media&token=05eece16-0515-45c3-a570-aabaa6322fb7", // Assuming you want to upload an image
     color: selectedColor,
     typeFace: "",
   });
@@ -97,7 +98,8 @@ const CreateEvent = () => {
         eventLocation: "",
         requireApproval: false,
         capacity: "",
-        image: "",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/event-invitation-project.appspot.com/o/goodvibes.webp?alt=media&token=05eece16-0515-45c3-a570-aabaa6322fb7",
         color: selectedColor,
         typeFace: "",
       });
@@ -248,7 +250,9 @@ const CreateEvent = () => {
 
       {/* Second column */}
       <div className="flex flex-col gap-6 w-full">
-        <ImageSelect selectedImage={formData.image} />
+        <ImageSelect
+          onImageSelect={(selectedImage) => console.log(selectedImage)}
+        />
         <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
           <ThemeColor selected={selectedColor} setSelected={setSelectedColor} />
         </div>
