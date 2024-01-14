@@ -5,8 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import ImageSelect from "./ImageSelect";
 import ThemeColor from "./ThemeColor";
 import { colors } from "../../common/Colors";
+<<<<<<< HEAD
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
+=======
+>>>>>>> 793e6fe1cdc4cf08c1778617b8fa345c9f567ca5
 
 const CreateEvent = () => {
   const getDefaultStartDate = () => {
