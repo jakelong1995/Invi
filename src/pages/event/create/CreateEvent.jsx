@@ -270,7 +270,6 @@ const CreateEvent = () => {
         <Footer />
       </div>
     </div>
-    // form
   );
 };
 export default CreateEvent;
