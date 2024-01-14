@@ -29,10 +29,10 @@ const Header = () => {
   };
 
   const navigateHome = () => {
-    navigate("/home");
+    navigate("/Invi/home");
   };
   const navEventCreate = () => {
-    navigate("/create-event");
+    navigate("/Invi/create-event");
   };
   const navHelp = () => {
     window.open("https://help.lu.ma/");

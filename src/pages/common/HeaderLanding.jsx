@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
-    navigate("/login");
+    navigate("/Invi/login");
   };
 
   return (

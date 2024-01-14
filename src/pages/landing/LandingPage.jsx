@@ -9,7 +9,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    navigate("/login");
+    navigate("/Invi/login");
   };
 
   return (
