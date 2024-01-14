@@ -3,7 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAsync } from "../../../api";
 
-const EventCard = ({ id, eventName, startDate, eventLocation, image }) => {
+const EventCard = ({
+  id,
+  eventName,
+  startDate,
+  eventLocation,
+  color,
+  image,
+  onClick,
+}) => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -21,9 +29,7 @@ const EventCard = ({ id, eventName, startDate, eventLocation, image }) => {
     navigate(`/event-management/${itemId}`);
   };
 
-  // Slice Time out of string
-
-  // Function to extract date and time from a date string
+  // Function to extract time from a date string
   const extractDateTime = (dateTimeString) => {
     const dateObject = new Date(dateTimeString);
 
@@ -48,7 +54,6 @@ const EventCard = ({ id, eventName, startDate, eventLocation, image }) => {
 
     return `${formattedDate}, ${formattedTime}`;
   };
-
   return (
     <div className="flex bg-white justify-between p-4 rounded-xl w-full">
       <div className="flex flex-col gap-2">

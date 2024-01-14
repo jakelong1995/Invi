@@ -15,6 +15,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
     "antd": "^5.12.8",
     "axios": "^1.6.5",
     "cors": "^2.8.5",
