@@ -9,6 +9,7 @@ const EventCard = ({
   startDate,
   eventLocation,
   image,
+  eventLink,
   onClick,
 }) => {
   const [events, setEvents] = useState([]);
@@ -54,11 +55,11 @@ const EventCard = ({
     return `${formattedDate}, ${formattedTime}`;
   };
   return (
-    <div className="flex bg-white justify-between p-4 rounded-xl w-full">
-      <div className="flex flex-col gap-2">
+    <div className="flex bg-white p-4 rounded-xl w-full gap-4">
+      <div className="flex flex-col gap-2 w-full">
         <p className="text-gray-500">{extractDateTime(startDate)}</p>
         <h2 className="text-gray-800 font-semibold text-xl">{eventName}</h2>
-        <div className="flex gap-1 items-center text-gray-500">
+        <div className="flex gap-1 items-center text-gray-500 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -78,7 +79,10 @@ const EventCard = ({
               d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
             />
           </svg>
-          <p>{eventLocation}</p>
+          <p>
+            {eventLocation}
+            {/* {eventLink} */}
+          </p>
         </div>
         <button
           className="w-fit gap-2 px-3 py-2 bg-black bg-opacity-5 hover:bg-gray-500 hover:text-white hover: border-none rounded-lg inline-flex text-gray-500 text-sm font-semibold"

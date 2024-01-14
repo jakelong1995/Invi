@@ -72,6 +72,7 @@ const EventHomeStructure = () => {
                 eventName={event.data.eventName}
                 startDate={event.data.startDate}
                 eventLocation={event.data.eventLocation}
+                eventLink={event.data.eventLink}
                 color={event.data.color.value}
                 image={event.data.image}
                 onClick={() => navigateManageEvent(event.id)}
@@ -90,6 +91,7 @@ const EventHomeStructure = () => {
                 eventName={event.data.eventName}
                 startDate={event.data.startDate}
                 eventLocation={event.data.eventLocation}
+                eventLink={event.data.eventLink}
                 color={event.data.color.value}
                 image={event.data.image}
                 onClick={() => navigateManageEvent(event.id)}
