@@ -13,7 +13,7 @@ import ErrorPage from "./ErrorPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Invi",
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <Landing />
