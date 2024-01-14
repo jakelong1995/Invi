@@ -8,7 +8,6 @@ const EventCard = ({
   eventName,
   startDate,
   eventLocation,
-  color,
   image,
   onClick,
 }) => {
