@@ -1,1 +1,0 @@
-import{e as n,r as s,j as e}from"./index-7dEjSj7z.js";const c=()=>{const t=n(),[a,r]=s.useState(t.state);return s.useEffect(()=>{r(t.state)},[t.state]),e.jsxs("div",{children:[e.jsx("h2",{children:"User Page"}),a?e.jsx(e.Fragment,{children:e.jsxs("p",{children:["Event Name: ",a.eventName]})}):e.jsx("p",{children:"No data available"})]})};export{c as default};
