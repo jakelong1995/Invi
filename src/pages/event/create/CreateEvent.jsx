@@ -113,10 +113,10 @@ const CreateEvent = () => {
   return (
     <div className="mx-auto p-4 flex flex-col items-center min-h-screen gap-4">
       <Header />
-      <div className="w-full max-w-3xl">
-        <form className="w-full bg-white m-4 p-4 rounded-xl flex gap-6 mx-auto justify-between h-fit">
+      <div className="max-w-3xl">
+        <form className="bg-white m-4 p-4 rounded-xl sm:flex gap-6 mx-auto justify-between w-full">
           {/* 1st column */}
-          <div className="flex flex-col w-full gap-6">
+          <div className="flex flex-col gap-6">
             {/* title */}
             <input
               className="font-semibold text-3xl text-gray-700 placeholder-gray-300"
@@ -259,7 +259,7 @@ const CreateEvent = () => {
             <ImageSelect
               onImageSelect={(selectedImage) => console.log(selectedImage)}
             />
-            <div className="bg-gray-100 rounded-lg p-2 gap-2 flex flex-col">
+            <div className="bg-gray-100 rounded-lg p-2 gap-2">
               <ThemeColor
                 selected={selectedColor}
                 setSelected={setSelectedColor}
